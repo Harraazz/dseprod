@@ -13,7 +13,7 @@ function home() {
         <div className="grid grid-cols-12">
           <div className=" col-span-8 text-start">
             <div className="ms-50 mb-50 pr-3  flex flex-col align-middle justify-center ">
-              <p className='font-bold mt-6 text-[20px]'>Perkenalkan</p>
+              <p className='font-bold mt-6 text-[20px] font-regular'>Perkenalkan</p>
               <h1 className='text-[40px] font-bold'>Dwi Sarana Edukasi</h1>
             <p className='text-[20px] mr-4'>Kami percaya setiap anak adalah bintang yang bersinar dengan caranya sendiri. Dengan pengalaman 15+ tahun mengelola program pendidikan berkualitas internasional, kami telah membantu ribuan siswa menemukan potensi terbaiknya.</p>
             </div>
