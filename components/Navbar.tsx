@@ -3,15 +3,15 @@ import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between  px-30 py-4 bg-white shadow-xl">
+    <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-30 py-4 bg-white shadow-xl z-50">
       {/* Kiri: Logo */}
       <div className="text-[20px] font-bold ms-20  text-blue-600">
-        <Image 
-            className="w-[119px]"
-            src='/DSE Logo 1.png'
-            alt="logo"
-            width={1920}
-            height={1080}
+        <Image
+          className="w-[119px]"
+          src="/DSE Logo 1.png"
+          alt="logo"
+          width={1920}
+          height={1080}
         />
       </div>
 
@@ -22,7 +22,9 @@ export default function Navbar() {
         <li className="hover:text-blue-500 cursor-pointer ">Quis</li>
         <li className="hover:text-blue-500 cursor-pointer ">News</li>
         <li className="hover:text-blue-500 cursor-pointer ">Location</li>
-        <li className="hover:text-blue-500 cursor-pointer mr-30">Partnership</li>
+        <li className="hover:text-blue-500 cursor-pointer mr-30">
+          Partnership
+        </li>
       </ul>
     </nav>
   );
