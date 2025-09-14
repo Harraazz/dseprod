@@ -5,6 +5,7 @@ import Image from "next/image";
 import Cards from "@/components/Kartu";
 import Programs from "@/components/Program";
 import { Banner } from "@/components/Banner";
+import Lokasi from "@/components/Lokasi";
 import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
 
 function Home() {
@@ -74,14 +75,36 @@ function Home() {
         </div>
         <div className="flexflex-col justify-center mt-10 items-center">
           <p className="text-start font-bold font-regular text-[44px] ms-50 mr-50">
-            Our Program
+            OUR PROGRAMS
           </p>
         </div>
         <div className="flex flex-col justify-center mt-10 items-center">
           <div className="grid grid-cols-3 gap-10">
             <Programs Gambar="/Asset 2.png" title="ENGLISH" bgColor="#35B5C3" />
-            <Programs Gambar="/Asset 3.png" title="ENGLISH" bgColor="#FFCD71" />
-            <Programs Gambar="/Asset 1.png" title="ENGLISH" bgColor="#DA384A" />
+            <Programs
+              Gambar="/Asset 3.png"
+              title="CALISTUNG"
+              bgColor="#FFCD71"
+            />
+            <Programs
+              Gambar="/Asset 1.png"
+              title="MATEMATIKA"
+              bgColor="#DA384A"
+            />
+          </div>
+        </div>
+        <div className="flexflex-col justify-center mt-10 items-center">
+          <p className="text-start font-bold font-regular text-[44px] ms-50 mr-50">
+            LOCATION
+          </p>
+        </div>
+        <div className="flex flex-col justify-center mt-10 items-center">
+          <div className="grid grid-cols-2 gap-10 [&>*:last-child]:col-span-2 [&>*:last-child]:justify-self-center">
+            <Lokasi gambar={"/DSE lOGO 1.png"} Footer={"BEKASI"} />
+            <Lokasi gambar={"/DSE lOGO 1.png"} Footer={"DEPOK"} />
+            <Lokasi gambar={"/DSE lOGO 1.png"} Footer={"SEMARANG"} />
+            <Lokasi gambar={"/DSE lOGO 1.png"} Footer={"BANDUNG"} />
+            <Lokasi gambar={"/DSE lOGO 1.png"} Footer={"TANGERANG SELATAN"} />
           </div>
         </div>
       </div>

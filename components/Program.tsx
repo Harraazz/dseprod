@@ -18,13 +18,13 @@ function Program({ Gambar, title, bgColor = "#fff" }: ProgramProps) {
   return (
     <div>
       <Card
-        className="w-[322px] flex flex-col justify-center items-center h-[373px]"
+        className="w-[340px] flex flex-col justify-center items-center h-[370px]"
         style={{ backgroundColor: bgColor }}
       >
-        <CardHeader className="text-center justify-center text-[40px] font-regular font-bold">
+        <CardHeader className="text-center justify-center text-[40px] font-regular font-bold text-white">
           {title}
         </CardHeader>
-        <CardContent className="border-2 rounded-[8px]  flex justify-center w-[274] h-[300px] pt-6 bg-white">
+        <CardContent className="border-2 rounded-[8px]  flex justify-center w-[280] h-[400px]  bg-white">
           <Image
             src={Gambar}
             alt={title}
@@ -34,7 +34,7 @@ function Program({ Gambar, title, bgColor = "#fff" }: ProgramProps) {
           />
         </CardContent>
         <CardFooter>
-          <Button variant="destructive">Destructive</Button>;
+          <Button variant="custom">Read More</Button>
         </CardFooter>
       </Card>
     </div>
