@@ -109,10 +109,6 @@ function Home() {
           </div>
         </div>
       </div>
-      {/* <div className="relative  w-full h-[337] gap-y-80">
-        <Image className="object-cover" fill src="/banner 2.png" alt="Banner" />
-      </div> */}
-
       <div className="relative w-full mb-10 mt-10">
         <Image
           src="/banner 2.png"
