@@ -112,6 +112,17 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+.text-stroke-solid {
+  color: #ffffff;
+  -webkit-text-stroke: 10px #35b5c3;
+  paint-order: stroke fill;
+}
+
+.text-stroke-solid2 {
+  color: #ffff00;
+  -webkit-text-stroke: 6px #35b5c3;
+  paint-order: stroke fill;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;

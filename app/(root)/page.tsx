@@ -6,6 +6,7 @@ import Cards from "@/components/Kartu";
 import Programs from "@/components/Program";
 import { Banner } from "@/components/Banner";
 import Lokasi from "@/components/Lokasi";
+import { Button } from "@/components/ui/button";
 import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
 
 function Home() {
@@ -74,7 +75,7 @@ function Home() {
           </div>
         </div>
         <div className="flexflex-col justify-center mt-10 items-center">
-          <p className="text-start font-bold font-regular text-[44px] ms-50 mr-50">
+          <p className="text-start font-bold font-regular text-[44px] ms-36 mr-36">
             OUR PROGRAMS
           </p>
         </div>
@@ -94,18 +95,42 @@ function Home() {
           </div>
         </div>
         <div className="flexflex-col justify-center mt-10 items-center">
-          <p className="text-start font-bold font-regular text-[44px] ms-50 mr-50">
+          <p className="text-start font-bold font-regular text-[44px] ms-36 mr-36">
             LOCATION
           </p>
         </div>
         <div className="flex flex-col justify-center mt-10 items-center">
           <div className="grid grid-cols-2 gap-10 [&>*:last-child]:col-span-2 [&>*:last-child]:justify-self-center">
-            <Lokasi gambar={"/DSE lOGO 1.png"} Footer={"BEKASI"} />
-            <Lokasi gambar={"/DSE lOGO 1.png"} Footer={"DEPOK"} />
-            <Lokasi gambar={"/DSE lOGO 1.png"} Footer={"SEMARANG"} />
-            <Lokasi gambar={"/DSE lOGO 1.png"} Footer={"BANDUNG"} />
-            <Lokasi gambar={"/DSE lOGO 1.png"} Footer={"TANGERANG SELATAN"} />
+            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"BEKASI"} />
+            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"DEPOK"} />
+            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"SEMARANG"} />
+            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"BANDUNG"} />
+            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"TANGERANG SELATAN"} />
           </div>
+        </div>
+      </div>
+      {/* <div className="relative  w-full h-[337] gap-y-80">
+        <Image className="object-cover" fill src="/banner 2.png" alt="Banner" />
+      </div> */}
+
+      <div className="relative w-full mb-10 mt-10">
+        <Image
+          src="/banner 2.png"
+          alt="Banner"
+          width={1280}
+          height={337}
+          className="w-full h-100 object-cover"
+        />
+        <div className="absolute inset-0 flex flex-col items-center p-6  ">
+          <p className="text-[60px] font-regular font-extrabold pt-10 text-stroke-solid">
+            Ayo uji serunya belajar bareng kami!
+          </p>
+          <p className="text-[50px] font-extrabold text-center font-regular text-stroke-solid2">
+            Ikuti quiz gratis sekarang!
+          </p>
+          <Button variant="custom2" size={"custom2"} className=" mt-5">
+            Pergi ke Quiz
+          </Button>
         </div>
       </div>
     </div>
