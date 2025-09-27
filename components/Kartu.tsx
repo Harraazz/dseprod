@@ -3,7 +3,7 @@ import { LucideProps } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 interface KartuProps {
-  icon: React.ComponentType<LucideProps> | null; // ✅ Boleh null
+  icon: React.ComponentType<LucideProps> | null; // biar Boleh null
   title: string;
   description: string;
   bgColor?: string;

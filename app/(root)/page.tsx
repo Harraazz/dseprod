@@ -6,6 +6,7 @@ import Cards from "@/components/Kartu";
 import Programs from "@/components/Program";
 import { Banner } from "@/components/Banner";
 import Lokasi from "@/components/Lokasi";
+import Berita from "@/components/Berita";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
 
@@ -42,6 +43,8 @@ function Home() {
         <p className="text-center font-extrabold font-regular text-[44px] ms-38 mr-38">
           Kami hadir sebagai solusi belajar yang dipercaya oleh ribuan keluarga.
         </p>
+
+        {/* Card With Icon */}
         <div className="flex flex-col items-center justify-center mt-10 ">
           <div className="grid grid-cols-2 gap-10">
             <Cards
@@ -74,11 +77,14 @@ function Home() {
             />
           </div>
         </div>
+
         <div className="flexflex-col justify-center mt-10 items-center">
           <p className="text-start font-bold font-regular text-[44px] ms-36 mr-36">
             OUR PROGRAMS
           </p>
         </div>
+
+        {/* Our Program  */}
         <div className="flex flex-col justify-center mt-10 items-center">
           <div className="grid grid-cols-3 gap-10">
             <Programs Gambar="/Asset 2.png" title="ENGLISH" bgColor="#35B5C3" />
@@ -99,6 +105,8 @@ function Home() {
             LOCATION
           </p>
         </div>
+
+        {/* Location  */}
         <div className="flex flex-col justify-center mt-10 items-center">
           <div className="grid grid-cols-2 gap-10 [&>*:last-child]:col-span-2 [&>*:last-child]:justify-self-center">
             <Lokasi gambar={"/DSE Logo 1.png"} Footer={"BEKASI"} />
@@ -109,6 +117,7 @@ function Home() {
           </div>
         </div>
       </div>
+      {/* banner awan */}
       <div className="relative w-full mb-10 mt-10">
         <Image
           src="/banner 2.png"
@@ -128,6 +137,15 @@ function Home() {
             Pergi ke Quiz
           </Button>
         </div>
+      </div>
+      <div className="flexflex-col justify-center mt-10 items-center">
+        <p className="text-start font-bold font-regular text-[44px] ms-36 mr-36">
+          NEWS
+        </p>
+      </div>
+      {/* News  */}
+      <div className="container">
+        <Berita />
       </div>
     </div>
   );
