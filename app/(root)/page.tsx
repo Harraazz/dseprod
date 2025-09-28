@@ -7,6 +7,7 @@ import Programs from "@/components/Program";
 import { Banner } from "@/components/Banner";
 import Lokasi from "@/components/Lokasi";
 import Berita from "@/components/Berita";
+import Cardnews from "@/components/CardNews";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
 
@@ -144,7 +145,7 @@ function Home() {
         </p>
       </div>
       {/* News  */}
-      <div className="container">
+      <div className="flex flex-col">
         <Berita />
       </div>
     </div>

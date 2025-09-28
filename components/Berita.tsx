@@ -23,9 +23,18 @@ function Berita() {
   return (
     <div className="mb-5 flex flex-col items-center justify-center">
       <Carousel>
-        <CarouselContent>
+        <CarouselContent className="">
           <CarouselItem className="basis-1/4">
-            <Cardnews Gambar="/Asset 3.png" title="test" bgColor="" />
+            <Cardnews Gambar="/DSE Logo 1.png" title="test" bgColor="" />
+          </CarouselItem>
+          <CarouselItem className="basis-1/4">
+            <Cardnews Gambar="/DSE Logo 1.png" title="test" bgColor="" />
+          </CarouselItem>
+          <CarouselItem className="basis-1/4">
+            <Cardnews Gambar="/DSE Logo 1.png" title="test" bgColor="" />
+          </CarouselItem>
+          <CarouselItem className="basis-1/4">
+            <Cardnews Gambar="/DSE Logo 1.png" title="test" bgColor="" />
           </CarouselItem>
         </CarouselContent>
       </Carousel>
