@@ -22,7 +22,7 @@ function CardNews({
 }: ProgramProps) {
   return (
     <Card
-      className="w-[300px] h-[370px] flex flex-col"
+      className="w-[260px] h-[370px] flex flex-col"
       style={{ backgroundColor: bgColor }}
     >
       {/* Gambar */}

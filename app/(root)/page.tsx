@@ -7,7 +7,7 @@ import Programs from "@/components/Program";
 import { Banner } from "@/components/Banner";
 import Lokasi from "@/components/Lokasi";
 import Berita from "@/components/Berita";
-import Cardnews from "@/components/CardNews";
+import Footer from "@/components/Ftr";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
 
@@ -80,7 +80,7 @@ function Home() {
         </div>
 
         <div className="flexflex-col justify-center mt-10 items-center">
-          <p className="text-start font-bold font-regular text-[44px] ms-36 mr-36">
+          <p className="text-start font-bold font-regular text-[44px] ms-52  mr-52">
             OUR PROGRAMS
           </p>
         </div>
@@ -102,7 +102,7 @@ function Home() {
           </div>
         </div>
         <div className="flexflex-col justify-center mt-10 items-center">
-          <p className="text-start font-bold font-regular text-[44px] ms-36 mr-36">
+          <p className="text-start font-bold font-regular text-[44px] ms-50 mr-50">
             LOCATION
           </p>
         </div>
@@ -140,7 +140,7 @@ function Home() {
         </div>
       </div>
       <div className="flexflex-col justify-center mt-10 items-center">
-        <p className="text-start font-bold font-regular text-[44px] ms-36 mr-36">
+        <p className="text-start font-bold font-regular text-[44px] ms-55 mr-36">
           NEWS
         </p>
       </div>
@@ -148,6 +148,7 @@ function Home() {
       <div className="flex flex-col">
         <Berita />
       </div>
+      <Footer />
     </div>
   );
 }
