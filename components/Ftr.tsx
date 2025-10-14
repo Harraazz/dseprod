@@ -4,7 +4,7 @@ import { Instagram, Youtube, Facebook } from "lucide-react";
 
 function Ftr() {
   return (
-    <footer className="relative w-full overflow-hidden">
+    <footer className="relative w-full overflow-hidden shadow-[0_1px_50px_rgba(0,0,0,0.2)]">
       {/* Background oval kiri */}
       <div className="absolute left-10 top-30 w-[700px] h-[400px] rounded-[50%] bg-[#DA384A8F] blur-3xl opacity-70"></div>
       {/* Background oval kanan */}

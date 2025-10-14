@@ -22,7 +22,7 @@ import {
 function Berita() {
   return (
     <div className="mb-1 flex flex-col items-center justify-center">
-      <Carousel>
+      <Carousel className="w-full">
         <CarouselContent className="flex gap-x-1 py-0">
           <CarouselItem className="basis-1/4">
             <Cardnews

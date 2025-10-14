@@ -3,15 +3,62 @@ import Navbar from "@/components/Navbar";
 import ProbFix from "@/components/Bocil";
 import Image from "next/image";
 import Cards from "@/components/Kartu";
-import Programs from "@/components/Program";
 import { Banner } from "@/components/Banner";
 import Lokasi from "@/components/Lokasi";
 import Berita from "@/components/Berita";
 import Footer from "@/components/Ftr";
 import { Button } from "@/components/ui/button";
+import Cj from "@/components/CardPanjang";
+
 import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
 
 function Home() {
+  const data = [
+    {
+      title: "English",
+      description:
+        "Mengembangkan empat aspek literasi (reading, writing, speaking, listening) sambil membangun kepercayaan diri siswa ",
+      image: "/Bing-01.png",
+      color: "#20B9C3",
+    },
+    {
+      title: "Calistung",
+      description:
+        "Membantu anak mengenal huruf dan angka sebagai persiapan optimal memasuki pendidikan formal.",
+      image: "/calistung-01.png",
+      color: "#F3AF32",
+    },
+    {
+      title: "Matematika",
+      description:
+        "Memperkuat kemampuan dasar matematis dan mengembangkan pola pikir kritis",
+      image: "/math.png",
+      color: "#D94848",
+    },
+    {
+      title: "Math",
+      description:
+        "Memperkuat kemampuan dasar matematis dan mengembangkan pola pikir kritis",
+      image: "/math.png",
+      color: "#9BC24C",
+    },
+    {
+      title: "DSE Edu",
+      description:
+        "Program pengembangan internal DSE yang dirancang khusus untuk siswa SMP hingga SMA sebagai solusi dukungan tambahan dalam memahami materi sekolah. DSE Edu menggunakan sistem semi private dengan tiga pilihan kelas: Regular (pembelajaran rutin mingguan), Intensif (untuk kebutuhan akademik padat), dan Weekend (fleksibel untuk siswa sibuk).",
+      image: "/dse-edu.png",
+      color: "#157A84",
+    },
+  ];
+
+  const lokasiData = [
+    { gambar: "/DSE Logo 1.png", footer: "BEKASI" },
+    { gambar: "/DSE Logo 1.png", footer: "DEPOK" },
+    { gambar: "/DSE Logo 1.png", footer: "SEMARANG" },
+    { gambar: "/DSE Logo 1.png", footer: "BANDUNG" },
+    { gambar: "/DSE Logo 1.png", footer: "TANGERANG SELATAN" },
+  ];
+
   return (
     <div>
       <Navbar />
@@ -78,45 +125,27 @@ function Home() {
             />
           </div>
         </div>
-
-        <div className="flexflex-col justify-center mt-10 items-center">
-          <p className="text-start font-bold font-regular text-[44px] ms-52  mr-52">
-            OUR PROGRAMS
-          </p>
-        </div>
-
         {/* Our Program  */}
-        <div className="flex flex-col justify-center mt-10 items-center">
-          <div className="grid grid-cols-3 gap-10">
-            <Programs Gambar="/Asset 2.png" title="ENGLISH" bgColor="#35B5C3" />
-            <Programs
-              Gambar="/Asset 3.png"
-              title="CALISTUNG"
-              bgColor="#FFCD71"
-            />
-            <Programs
-              Gambar="/Asset 1.png"
-              title="MATEMATIKA"
-              bgColor="#DA384A"
-            />
-          </div>
-        </div>
-        <div className="flexflex-col justify-center mt-10 items-center">
-          <p className="text-start font-bold font-regular text-[44px] ms-50 mr-50">
-            LOCATION
-          </p>
-        </div>
+        <section className="container mx-auto px-40 py-12">
+          <h1 className="text-start font-bold font-regular text-[44px]">
+            OUR PROGRAM
+          </h1>
+          <div className="grid grid-cols-2 gap-6 pt-8">
+            {lokasiData.map((item, index) => {
+              const isLastOdd =
+                lokasiData.length % 2 !== 0 && index === lokasiData.length - 1;
 
-        {/* Location  */}
-        <div className="flex flex-col justify-center mt-10 items-center">
-          <div className="grid grid-cols-2 gap-10 [&>*:last-child]:col-span-2 [&>*:last-child]:justify-self-center">
-            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"BEKASI"} />
-            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"DEPOK"} />
-            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"SEMARANG"} />
-            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"BANDUNG"} />
-            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"TANGERANG SELATAN"} />
+              return (
+                <div
+                  key={index}
+                  className={isLastOdd ? "col-span-2 flex justify-center" : ""}
+                >
+                  <Lokasi gambar={item.gambar} footer={item.footer} />
+                </div>
+              );
+            })}
           </div>
-        </div>
+        </section>
       </div>
       {/* banner awan */}
       <div className="relative w-full mb-10 mt-10">
@@ -139,15 +168,12 @@ function Home() {
           </Button>
         </div>
       </div>
-      <div className="flexflex-col justify-center mt-10 items-center">
-        <p className="text-start font-bold font-regular text-[44px] ms-55 mr-36">
-          NEWS
-        </p>
-      </div>
+
       {/* News  */}
-      <div className="flex flex-col">
+      <section className="container mx-auto px-40 pt-12 pb-30">
+        <h1 className="text-start font-bold font-regular text-[44px]">NEWS</h1>
         <Berita />
-      </div>
+      </section>
       <Footer />
     </div>
   );
