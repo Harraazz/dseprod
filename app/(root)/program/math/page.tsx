@@ -100,16 +100,15 @@ export default function Page() {
           </div>
         </div>
       </section>
-
-      {/* Bagian video / testimoni */}
+      {/* LAYOUT BAWAH */}
       <section className="px-40 py-16 grid grid-cols-2 gap-10 items-center">
-        <div className="rounded-xl overflow-hidden shadow-md">
+        <div className="container flex items-center justify-center">
           <Image
-            src="/BG-2.jpg"
+            src="/Quiz 1.png"
             alt="Belajar anak"
-            width={500}
-            height={300}
-            className="object-cover w-full h-80"
+            width={357}
+            height={259}
+            className="object-contain w-100"
           />
         </div>
         <div>
@@ -120,7 +119,7 @@ export default function Page() {
             Kami sudah siapkan quiz singkat yang bisa dicoba anak untuk
             merasakan pengalaman belajarnya
           </p>
-          <button className="bg-red-500 text-white px-6 py-2 rounded-lg shadow hover:bg-red-600 transition">
+          <button className="bg-red-500 text-white font-regular font-bold px-6 py-2 rounded-lg shadow hover:bg-red-600 transition">
             Cobain Quiz Seru Gratis
           </button>
         </div>
@@ -143,7 +142,7 @@ export default function Page() {
           <h3 className="m-0 mt-1 text-[18px] text-[#164C52] font-medium leading-tight max-w-[500px]">
             Yuk ngobrol bareng tim DSE
           </h3>
-          <button className="mt-4 bg-[#35B5C3] border-4 border-white w-60 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-white hover:text-[#35B5C3] transition">
+          <button className="mt-4 bg-[#35B5C3] border-4 border-white w-60 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-white hover:text-[#35B5C3] transition hover:border-[#35B5C3]">
             Chat Kami Sekarang
           </button>
         </div>
