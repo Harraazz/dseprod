@@ -3,68 +3,54 @@ import { LucideProps } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 interface KartuProps {
-  icon: React.ComponentType<LucideProps> | null; // biar Boleh null
+  icon: React.ComponentType<LucideProps> | null;
   title: string;
-<<<<<<< HEAD
-  description: string;
-  bgColor?: string;
-  iColor?: string;
-=======
-  description?: string;
   bgColor?: string;
   iColor?: string;
   iconSize?: number;
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
+  textSize?: string;
 }
+
 function Kartu({
   icon: Icon,
   title,
-  description,
   bgColor = "#35B5C3",
   iColor = "#fff",
-<<<<<<< HEAD
-=======
-  iconSize = 89,
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
+  iconSize = 64,
+  textSize = "text-[24px]",
 }: KartuProps) {
   if (!Icon) {
     return (
-      <Card className="w-150">
+      <Card className="w-full max-w-[220px] mx-auto border-none shadow-none">
         <CardContent className="flex justify-center">
           <div
             className="rounded-[24px] p-4 flex items-center justify-center"
             style={{ backgroundColor: bgColor }}
           >
-            <div className="w-[89px] h-[89px] bg-gray-300 rounded-full flex items-center justify-center">
+            <div className="w-[64px] h-[64px] bg-gray-300 rounded-full flex items-center justify-center">
               <span>No Icon</span>
             </div>
           </div>
         </CardContent>
         <CardFooter className="text-center justify-center flex-col font-regular">
-          <p className="text-[24px] font-bold">{title}</p>
-          <p className="text-[16px] ms-11 mr-11">{description}</p>
+          <p className={`font-semibold ${textSize}`}>{title}</p>
         </CardFooter>
       </Card>
     );
   }
 
   return (
-    <Card className="w-150 outline-none border-none shadow-none">
-      <CardContent className="flex justify-center ">
+    <Card className="w-full max-w-[400px] mx-auto border-none shadow-none">
+      <CardContent className="flex justify-center">
         <div
           className="rounded-[24px] p-4 flex items-center justify-center"
           style={{ backgroundColor: bgColor }}
         >
-<<<<<<< HEAD
-          <Icon size={89} color={iColor} />
-=======
           <Icon size={iconSize} color={iColor} />
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
         </div>
       </CardContent>
       <CardFooter className="text-center justify-center flex-col font-regular">
-        <p className="text-[24px] font-bold">{title}</p>
-        <p className="text-[16px] ms-12 mr-12">{description}</p>
+        <p className={`font-semibold ${textSize}`}>{title}</p>
       </CardFooter>
     </Card>
   );

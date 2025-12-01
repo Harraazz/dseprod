@@ -28,6 +28,7 @@
       ]
     }
   },
+<<<<<<< HEAD
   "include": [
     "next-env.d.ts",
     "**/*.ts",
@@ -41,3 +42,8 @@
     "node_modules"
   ]
 }
+=======
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(root)/location"],
+  "exclude": ["node_modules"]
+}
+>>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8

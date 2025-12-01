@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -11,6 +12,8 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: "Dwi Sarana Edukasi",
   description: "Website resmi Dwi Sarana Edukasi",
+  title: "Dwi Sarana Edukasi",
+  description: "Website resmi Dwi Sarana Edukasi",
 };
 
 export default function RootLayout({
@@ -20,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <body className={`${nunito.variable} antialiased font-sans`}>
       <body className={`${nunito.variable} antialiased font-sans`}>
         {children}
       </body>
