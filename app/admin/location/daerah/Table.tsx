@@ -1,7 +1,6 @@
 "use client"
-
 import React, { useState, useMemo } from "react"
-import { ArrowUpDown, Search, Eye, Pencil, Trash2, Plus } from "lucide-react"
+import { ArrowUpDown, Search, Pencil, Trash2, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Table,
@@ -14,81 +13,49 @@ import {
 import { Input } from "@/components/ui/input"
 
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react'
 
-type News = {
-  title: string
-  content: string
-  date: string
-  status: "Aktif" | "Tidak Aktif"
+type Daerah = {
+  id: number
+  nama_daerah: string
+  status: string
 }
 
-const initialData: News[] = [
-  {
-    title: "Lorem Ipsum",
-    content: "Lorem ipsum dolor sit amet consectetur.",
-    date: "2025-08-10",
-    status: "Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Gravida pharetra dignissim mi magnis nonl.",
-    date: "2025-08-12",
-    status: "Tidak Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Lorem ipsum dolor sit amet consectetur.",
-    date: "2025-08-11",
-    status: "Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Berita tambahan untuk testing pagination.",
-    date: "2025-08-15",
-    status: "Tidak Aktif",
-  },
-    {
-    title: "Lorem Ipsum",
-    content: "Berita tambahan untuk testing pagination.",
-    date: "2025-08-15",
-    status: "Tidak Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Lorem ipsum dolor sit amet consectetur.",
-    date: "2025-08-11",
-    status: "Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Lorem ipsum dolor sit amet consectetur.",
-    date: "2025-08-11",
-    status: "Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Satu lagi contoh berita dummy.",
-    date: "2025-08-18",
-    status: "Aktif",
-  },
-    {
-    title: "Lorem Ipsum",
-    content: "Berita tambahan untuk testing pagination.",
-    date: "2025-08-15",
-    status: "Tidak Aktif",
-  },
-]
-
-export default function NewsTable() {
+export default function LocationDaerahTable() {
   const router = useRouter();
-  const [data] = useState(initialData)
+  const [data, setData] = useState<Daerah[]>([])
   const [search, setSearch] = useState("")
-  const [sortConfig, setSortConfig] = useState<{ key: keyof News; direction: "asc" | "desc" }>({
-  key: "date",
+  const [sortConfig, setSortConfig] = useState<{ key: keyof Daerah; direction: "asc" | "desc" }>({
+  key: "status",
   direction: "desc",
 })
   const [page, setPage] = useState(1)
   const rowsPerPage = 6
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const res = await fetch("/api/daerah");
+        const dataset = await res.json();
+
+        console.log("Narik data:", dataset);
+
+        if (Array.isArray(dataset.data)) {
+          setData(dataset.data);
+          console.log("✅ Data loaded:", dataset.data);
+        } else {
+          console.error("🚨 Data bukan array:", dataset.data);
+          setData([]);
+        }
+      } catch (err) {
+        console.error("❌ Failed to load daerah:", err);
+        setData([]);
+      }
+    }
+
+    loadData();
+  }, []);
+  console.log(data)
 
   const sortedData = useMemo(() => {
     let filtered = [...data]
@@ -97,20 +64,14 @@ export default function NewsTable() {
     if (search) {
       filtered = filtered.filter(
         (item) =>
-          item.title.toLowerCase().includes(search.toLowerCase()) ||
-          item.content.toLowerCase().includes(search.toLowerCase())
+          item.nama_daerah.toLowerCase().includes(search.toLowerCase())
       )
     }
 
     if (sortConfig) {
       filtered.sort((a, b) => {
-        if (sortConfig.key === "date") {
-          return sortConfig.direction === "asc"
-            ? new Date(a.date).getTime() - new Date(b.date).getTime()
-            : new Date(b.date).getTime() - new Date(a.date).getTime()
-        }
         if (sortConfig.key === "status") {
-          const order = { Aktif: 1, "Tidak Aktif": 2 }
+          const order = {"Aktif": 1, "Nonaktif": 2 }
           return sortConfig.direction === "asc"
             ? order[a.status] - order[b.status]
             : order[b.status] - order[a.status]
@@ -125,7 +86,7 @@ export default function NewsTable() {
   const totalPages = Math.ceil(sortedData.length / rowsPerPage)
   const paginatedData = sortedData.slice((page - 1) * rowsPerPage, page * rowsPerPage)
 
-  const sortData = (key: keyof News) => {
+  const sortData = (key: keyof Daerah) => {
     let direction: "asc" | "desc" = "asc"
     if (sortConfig && sortConfig.key === key && sortConfig.direction === "asc") {
       direction = "desc"
@@ -133,8 +94,30 @@ export default function NewsTable() {
     setSortConfig({ key, direction })
   }
 
+  const handleDelete = async (id: number) => {
+    try {
+      console.log("⏳ Deleting daerah with ID:", id)
+      const res = await fetch(`/api/daerah`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          
+        },
+        body: JSON.stringify({ id }),
+      })
+      if (res.ok) {
+        console.log("✅ Deleted daerah with ID:", id)
+        setData(data.filter((item) => item.id !== id))
+      } else {
+        console.error("Failed to delete daerah")
+      }
+    } catch (err) {
+      console.error("Failed to delete daerah", err)
+      }
+  }
+
   return (
-    <div className="space-y-4 font-regular">
+    <div className="space-y-4">
       {/* 🔎 Search bar */}
         <div className="flex justify-between gap-3 mb-5">
             <div className="flex gap-3">
@@ -153,11 +136,9 @@ export default function NewsTable() {
               </div>
             </div>
             <Button
-              className="bg-yellow-500 hover:bg-yellow-600 text-white flex items-center gap-2"
-              onClick={() => router.push("/admin/news/create")}
-            >
-              <Plus className="h-4 w-4"/>
-              Buat berita baru
+            onClick={() => router.push("/admin/location/daerah/create")}className="bg-yellow-500 hover:bg-yellow-600 text-white flex items-center gap-2 ">
+              <Plus className="h-4 w-4" />
+              Buat daerah baru
             </Button>
         </div>
 
@@ -166,13 +147,7 @@ export default function NewsTable() {
 
           <TableHeader className="bg-slate-100 sticky top-0 z-10 rounded-t-md">
             <TableRow className="font-semibold rounded-xl">
-              <TableHead>Judul Berita</TableHead>
-              <TableHead>Isi Berita</TableHead>
-              <TableHead>
-                <Button variant="ghost" className="" onClick={() => sortData("date")}>
-                  Tanggal Berita <ArrowUpDown className="ml-2 h-4 w-4" />
-                </Button>
-              </TableHead>
+              <TableHead>Lokasi</TableHead>
               <TableHead>
                 <Button variant="ghost" onClick={() => sortData("status")}>
                   Status <ArrowUpDown className="ml-2 h-4 w-4" />
@@ -185,18 +160,10 @@ export default function NewsTable() {
           <TableBody className="">
             {paginatedData.map((item, i) => (
               <TableRow key={i}>
-                <TableCell>{item.title}</TableCell>
-                <TableCell className="truncate max-w-xs">{item.content}</TableCell>
-                <TableCell>
-                  {new Date(item.date).toLocaleDateString("id-ID", {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </TableCell>
+                <TableCell>{item.nama_daerah}</TableCell>
                 <TableCell className="">
                   <span
-                    className={`w-20 px-3 py-1 rounded-md text-xs font-semibold ${
+                    className={`w-20 px-3 py-1 rounded-md text-xs font-medium ${
                       item.status === "Aktif"
                         ? "bg-green-100 text-green-700"
                         : "bg-red-100 text-red-700"
@@ -205,10 +172,15 @@ export default function NewsTable() {
                     {item.status}
                   </span>
                 </TableCell>
-                <TableCell className="flex gap-2 items-center mt-2">
-                  <Eye className="w-4 h-4 text-blue-500 cursor-pointer" />
-                  <Pencil className="w-4 h-4 text-orange-500 cursor-pointer" />
-                  <Trash2 className="w-4 h-4 text-red-500 cursor-pointer" />
+                <TableCell className="flex gap-2 mt-2">
+                  <Pencil
+                  className="w-4 h-4 text-orange-500 cursor-pointer"
+                  onClick={() => router.push(`/admin/location/daerah/edit/${item.id}`)}
+                  />
+                  <Trash2
+                  className="w-4 h-4 text-red-500 cursor-pointer"
+                  onClick={() => handleDelete(item.id)}
+                  />
                 </TableCell>
               </TableRow>
             ))}
@@ -218,7 +190,7 @@ export default function NewsTable() {
 
       {/* 🔹 Pagination control */}
       <div className="absolute w-[160vh] flex items-center justify-between text-sm text-gray-600 bottom-15 left-80">
-        <p className="font-regular font-semibold text-black">Total Berita: {sortedData.length}</p>
+        <p className="font-regular font-semibold text-black">Total Daerah: {sortedData.length}</p>
         <div className="flex items-center gap-2">
           <Button
             variant="outline"

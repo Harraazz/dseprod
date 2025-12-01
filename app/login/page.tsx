@@ -1,8 +1,9 @@
-
+"use client"
 import { LoginForm } from "@/components/LoginForm"
 import Image from "next/image"
 
 export default function LoginPage() {
+
   return (
     <div className="flex min-h-svh flex-col items-center justify-center font-regular">
       <Image

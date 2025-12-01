@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/table"
 import { Input } from "@/components/ui/input"
 
+import { useRouter } from 'next/navigation';
+
 type News = {
   title: string
   content: string
@@ -77,7 +79,8 @@ const initialData: News[] = [
   },
 ]
 
-export default function LocationTable() {
+export default function LocationCabangTable() {
+  const router = useRouter();
   const [data] = useState(initialData)
   const [search, setSearch] = useState("")
   const [sortConfig, setSortConfig] = useState<{ key: keyof News; direction: "asc" | "desc" }>({
@@ -85,7 +88,7 @@ export default function LocationTable() {
   direction: "desc",
 })
   const [page, setPage] = useState(1)
-  const rowsPerPage = 7
+  const rowsPerPage = 6
 
   const sortedData = useMemo(() => {
     let filtered = [...data]
@@ -149,7 +152,8 @@ export default function LocationTable() {
                 />
               </div>
             </div>
-            <Button className="bg-yellow-500 hover:bg-yellow-600 text-white flex items-center gap-2 ">
+            <Button
+            onClick={() => router.push("/admin/location/cabang/create")}className="bg-yellow-500 hover:bg-yellow-600 text-white flex items-center gap-2 ">
               <Plus className="h-4 w-4" />
               Buat berita baru
             </Button>
@@ -160,11 +164,11 @@ export default function LocationTable() {
 
           <TableHeader className="bg-slate-100 sticky top-0 z-10 rounded-t-md">
             <TableRow className="font-semibold rounded-xl">
-              <TableHead>Judul Berita</TableHead>
-              <TableHead>Isi Berita</TableHead>
+              <TableHead>Lokasi</TableHead>
+              <TableHead>Alamat</TableHead>
               <TableHead>
                 <Button variant="ghost" className="" onClick={() => sortData("date")}>
-                  Tanggal Berita <ArrowUpDown className="ml-2 h-4 w-4" />
+                  Tanggal Buka <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
               </TableHead>
               <TableHead>
@@ -199,7 +203,7 @@ export default function LocationTable() {
                     {item.status}
                   </span>
                 </TableCell>
-                <TableCell className="flex gap-2">
+                <TableCell className="flex gap-2 mt-2">
                   <Pencil className="w-4 h-4 text-orange-500 cursor-pointer" />
                   <Trash2 className="w-4 h-4 text-red-500 cursor-pointer" />
                 </TableCell>
@@ -210,8 +214,8 @@ export default function LocationTable() {
       </div>
 
       {/* 🔹 Pagination control */}
-      <div className="flex items-center justify-between text-sm text-gray-600">
-        <p>Total berita: {sortedData.length}</p>
+      <div className="absolute w-[160vh] flex items-center justify-between text-sm text-gray-600 bottom-15 left-80">
+        <p className="font-regular font-semibold text-black">Total Quiz: {sortedData.length}</p>
         <div className="flex items-center gap-2">
           <Button
             variant="outline"

@@ -1,3 +1,4 @@
+"use client"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 
@@ -11,11 +12,38 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { toast } from "sonner"
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+import { useRouter } from "next/navigation"
+
+export function LoginForm({className,...props}: React.ComponentProps<"div">) {
+  const router = useRouter()
+
+  async function handleLogin(e: React.FormEvent) {
+    e.preventDefault()
+
+    const email = (document.getElementById("email") as HTMLInputElement).value
+    const password = (document.getElementById("password") as HTMLInputElement).value
+
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    })
+
+    const data = await res.json()
+
+    if (!res.ok) {
+      alert("Login gagal!")
+      return
+    }
+
+    // Simpan JWT ke localStorage
+    localStorage.setItem("token", data.token)
+
+    console.log("Login berhasil!")
+    router.push("/admin/dashboard")
+  }
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="w-150 rounded-3xl py-8 px-8">
@@ -30,15 +58,15 @@ export function LoginForm({
             <CardTitle className="text-3xl font-semibold my-3">Sign In</CardTitle>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="grid gap-6">
               <div className="grid gap-6">
                 <div className="grid gap-1">
-                  <Label htmlFor="username">Username</Label>
+                  <Label htmlFor="email">Email</Label>
                   <Input
-                    id="username"
-                    type="username"
-                    placeholder="Enter your username"
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
                     className="w-full h-12 border-1 border-black"
                     required
                   />

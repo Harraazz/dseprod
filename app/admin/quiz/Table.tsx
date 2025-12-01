@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useMemo } from "react"
-import { ArrowUpDown, Search, Pencil, Trash2, Plus } from "lucide-react"
+import { ArrowUpDown, Search, Eye, Pencil, Trash2, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Table,
@@ -85,7 +85,7 @@ export default function QuizTable() {
   direction: "desc",
 })
   const [page, setPage] = useState(1)
-  const rowsPerPage = 7
+  const rowsPerPage = 6
 
   const sortedData = useMemo(() => {
     let filtered = [...data]
@@ -160,16 +160,16 @@ export default function QuizTable() {
 
           <TableHeader className="bg-slate-100 sticky top-0 z-10 rounded-t-md">
             <TableRow className="font-semibold rounded-xl">
-              <TableHead>Judul Berita</TableHead>
-              <TableHead>Isi Berita</TableHead>
+              <TableHead>Program</TableHead>
+              <TableHead>Nama</TableHead>
               <TableHead>
                 <Button variant="ghost" className="" onClick={() => sortData("date")}>
-                  Tanggal Berita <ArrowUpDown className="ml-2 h-4 w-4" />
+                  Tanggal Quiz <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
               </TableHead>
               <TableHead>
                 <Button variant="ghost" onClick={() => sortData("status")}>
-                  Status <ArrowUpDown className="ml-2 h-4 w-4" />
+                  Skor <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
               </TableHead>
               <TableHead>Action</TableHead>
@@ -199,8 +199,8 @@ export default function QuizTable() {
                     {item.status}
                   </span>
                 </TableCell>
-                <TableCell className="flex gap-2">
-                  <Pencil className="w-4 h-4 text-orange-500 cursor-pointer" />
+                <TableCell className="flex gap-2 mt-2">
+                  <Eye className="w-4 h-4 text-blue-500 cursor-pointer" />
                   <Trash2 className="w-4 h-4 text-red-500 cursor-pointer" />
                 </TableCell>
               </TableRow>
@@ -210,8 +210,8 @@ export default function QuizTable() {
       </div>
 
       {/* 🔹 Pagination control */}
-      <div className="flex items-center justify-between text-sm text-gray-600">
-        <p>Total berita: {sortedData.length}</p>
+      <div className="absolute w-[160vh] flex items-center justify-between text-sm text-gray-600 bottom-15 left-80">
+        <p className="font-regular font-semibold text-black">Total Quiz: {sortedData.length}</p>
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
