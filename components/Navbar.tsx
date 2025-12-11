@@ -11,7 +11,7 @@ const items = [
   },
   {
     title: "Kuis",
-    url: "/kuis",
+    url: "/quiz",
   },
   {
     title: "berita",
