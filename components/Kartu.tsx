@@ -5,16 +5,10 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 interface KartuProps {
   icon: React.ComponentType<LucideProps> | null; // biar Boleh null
   title: string;
-<<<<<<< HEAD
-  description: string;
-  bgColor?: string;
-  iColor?: string;
-=======
   description?: string;
   bgColor?: string;
   iColor?: string;
   iconSize?: number;
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
 }
 function Kartu({
   icon: Icon,
@@ -22,17 +16,14 @@ function Kartu({
   description,
   bgColor = "#35B5C3",
   iColor = "#fff",
-<<<<<<< HEAD
-=======
   iconSize = 89,
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
 }: KartuProps) {
   if (!Icon) {
     return (
       <Card className="w-150">
         <CardContent className="flex justify-center">
           <div
-            className="rounded-[24px] p-4 flex items-center justify-center"
+            className="rounded-3xl p-4 flex items-center justify-center"
             style={{ backgroundColor: bgColor }}
           >
             <div className="w-[89px] h-[89px] bg-gray-300 rounded-full flex items-center justify-center">
@@ -52,14 +43,10 @@ function Kartu({
     <Card className="w-150 outline-none border-none shadow-none">
       <CardContent className="flex justify-center ">
         <div
-          className="rounded-[24px] p-4 flex items-center justify-center"
+          className="rounded-3xl p-4 flex items-center justify-center"
           style={{ backgroundColor: bgColor }}
         >
-<<<<<<< HEAD
-          <Icon size={89} color={iColor} />
-=======
           <Icon size={iconSize} color={iColor} />
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
         </div>
       </CardContent>
       <CardFooter className="text-center justify-center flex-col font-regular">

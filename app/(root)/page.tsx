@@ -3,17 +3,6 @@ import Navbar from "@/components/Navbar";
 import ProbFix from "@/components/Bocil";
 import Image from "next/image";
 import Cards from "@/components/Kartu";
-<<<<<<< HEAD
-import Programs from "@/components/Program";
-import { Banner } from "@/components/Banner";
-import Lokasi from "@/components/Lokasi";
-import Berita from "@/components/Berita";
-import Cardnews from "@/components/CardNews";
-import { Button } from "@/components/ui/button";
-import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
-
-function Home() {
-=======
 import { Banner } from "@/components/Banner";
 import Lokasi from "@/components/Lokasi";
 import Berita from "@/components/Berita";
@@ -70,7 +59,6 @@ function Home() {
     { gambar: "/DSE Logo 1.png", footer: "TANGERANG SELATAN" },
   ];
 
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
   return (
     <div>
       <Navbar />
@@ -137,47 +125,6 @@ function Home() {
             />
           </div>
         </div>
-<<<<<<< HEAD
-
-        <div className="flexflex-col justify-center mt-10 items-center">
-          <p className="text-start font-bold font-regular text-[44px] ms-36 mr-36">
-            OUR PROGRAMS
-          </p>
-        </div>
-
-        {/* Our Program  */}
-        <div className="flex flex-col justify-center mt-10 items-center">
-          <div className="grid grid-cols-3 gap-10">
-            <Programs Gambar="/Asset 2.png" title="ENGLISH" bgColor="#35B5C3" />
-            <Programs
-              Gambar="/Asset 3.png"
-              title="CALISTUNG"
-              bgColor="#FFCD71"
-            />
-            <Programs
-              Gambar="/Asset 1.png"
-              title="MATEMATIKA"
-              bgColor="#DA384A"
-            />
-          </div>
-        </div>
-        <div className="flexflex-col justify-center mt-10 items-center">
-          <p className="text-start font-bold font-regular text-[44px] ms-36 mr-36">
-            LOCATION
-          </p>
-        </div>
-
-        {/* Location  */}
-        <div className="flex flex-col justify-center mt-10 items-center">
-          <div className="grid grid-cols-2 gap-10 [&>*:last-child]:col-span-2 [&>*:last-child]:justify-self-center">
-            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"BEKASI"} />
-            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"DEPOK"} />
-            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"SEMARANG"} />
-            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"BANDUNG"} />
-            <Lokasi gambar={"/DSE Logo 1.png"} Footer={"TANGERANG SELATAN"} />
-          </div>
-        </div>
-=======
         {/* Our Program  */}
         <section className="container mx-auto px-40 py-12">
           <h1 className="text-start font-bold font-regular text-[44px]">
@@ -199,7 +146,6 @@ function Home() {
             })}
           </div>
         </section>
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
       </div>
       {/* banner awan */}
       <div className="relative w-full mb-10 mt-10">
@@ -222,17 +168,6 @@ function Home() {
           </Button>
         </div>
       </div>
-<<<<<<< HEAD
-      <div className="flexflex-col justify-center mt-10 items-center">
-        <p className="text-start font-bold font-regular text-[44px] ms-36 mr-36">
-          NEWS
-        </p>
-      </div>
-      {/* News  */}
-      <div className="flex flex-col">
-        <Berita />
-      </div>
-=======
 
       {/* News  */}
       <section className="container mx-auto px-40 pt-12 pb-30">
@@ -240,9 +175,7 @@ function Home() {
         <Berita />
       </section>
       <Footer />
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
     </div>
   );
 }
-
 export default Home;

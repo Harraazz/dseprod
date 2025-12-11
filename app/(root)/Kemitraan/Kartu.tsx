@@ -24,10 +24,10 @@ function Kartu({
       <Card className="w-full max-w-[220px] mx-auto border-none shadow-none">
         <CardContent className="flex justify-center">
           <div
-            className="rounded-[24px] p-4 flex items-center justify-center"
+            className="rounded-3xl p-4 flex items-center justify-center"
             style={{ backgroundColor: bgColor }}
           >
-            <div className="w-[64px] h-[64px] bg-gray-300 rounded-full flex items-center justify-center">
+            <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center">
               <span>No Icon</span>
             </div>
           </div>
@@ -43,7 +43,7 @@ function Kartu({
     <Card className="w-full max-w-[400px] mx-auto border-none shadow-none">
       <CardContent className="flex justify-center">
         <div
-          className="rounded-[24px] p-4 flex items-center justify-center"
+          className="rounded-3xl p-4 flex items-center justify-center"
           style={{ backgroundColor: bgColor }}
         >
           <Icon size={iconSize} color={iColor} />

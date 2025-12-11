@@ -162,7 +162,7 @@ function page() {
         />
       </section>
       <section className="w-full bg-[#35B5C3] pb-10 flex justify-center items-center">
-        <div className="bg-white rounded-3xl shadow-lg text-center px-8 py-10 max-w-3xl w-[100%]">
+        <div className="bg-white rounded-3xl shadow-lg text-center px-8 py-10 max-w-3xl w-full">
           <h2 className="text-4xl font-bold font-regular mb-2">
             Tertarik Bermitra?
           </h2>

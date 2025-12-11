@@ -8,7 +8,7 @@ interface JudulProps {
 
 function Bannerjudul({ title, subtitle }: JudulProps) {
   return (
-    <div className="relative w-full h-[30rem]">
+    <div className="relative w-full h-120">
       {/* Background image */}
       <Image
         className="object-cover"

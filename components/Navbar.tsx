@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-"use client";
-import Image from "next/image";
-
-export default function Navbar() {
-  return (
-    <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-30 py-4 bg-white shadow-xl z-50">
-      {/* Kiri: Logo */}
-      <div className="text-[20px] font-bold ms-20  text-blue-600">
-=======
 import Image from "next/image";
 
 const items = [
@@ -42,7 +32,6 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-45 py-4 bg-white shadow-xl z-50">
       {/* Kiri: Logo */}
       <div className="text-[20px] font-bold   text-blue-600">
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
         <Image
           className="w-[119px]"
           src="/DSE Logo 1.png"
@@ -53,24 +42,12 @@ export default function Navbar() {
       </div>
 
       {/* Kanan: Navigasi */}
-<<<<<<< HEAD
-      <ul className="flex space-x-15 text-gray-700 font-medium ">
-        <li className="hover:text-blue-500 cursor-pointer ">Home</li>
-        <li className="hover:text-blue-500 cursor-pointer ">Program</li>
-        <li className="hover:text-blue-500 cursor-pointer ">Quis</li>
-        <li className="hover:text-blue-500 cursor-pointer ">News</li>
-        <li className="hover:text-blue-500 cursor-pointer ">Location</li>
-        <li className="hover:text-blue-500 cursor-pointer mr-30">
-          Partnership
-        </li>
-=======
       <ul className="flex space-x-15 text-gray-700 font-medium">
         {items.map((i) => (
           <li key={i.title} className="hover:text-blue-500 cursor-pointer">
             <a href={i.url}>{i.title}</a>
           </li>
         ))}
->>>>>>> b6d5f1fb73a12db31543a3ab42ee3eff560920f8
       </ul>
     </nav>
   );

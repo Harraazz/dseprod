@@ -67,7 +67,7 @@ export function LoginForm({className,...props}: React.ComponentProps<"div">) {
                     id="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full h-12 border-1 border-black"
+                    className="w-full h-12 border border-black"
                     required
                   />
                 </div>
@@ -79,7 +79,7 @@ export function LoginForm({className,...props}: React.ComponentProps<"div">) {
                   id="password"
                   type="password"
                   placeholder="Enter your password"
-                  className="w-full h-12 border-1 border-black"
+                  className="w-full h-12 border border-black"
                   required />
                 <a
                 href="#"
