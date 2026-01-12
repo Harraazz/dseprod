@@ -38,7 +38,9 @@ export default function CreateForm() {
     const formData = new FormData(form)
     formData.append("nama_daerah", namaDaerah);
     formData.append("status", status);
-    formData.append("gambar", selectedFile);
+    if (selectedFile) {
+      formData.append("gambar", selectedFile);
+    }
     console.log(formData.get("nama_daerah"))
     console.log(formData.get("status"))
     console.log(formData.get("gambar"))
@@ -126,9 +128,9 @@ export default function CreateForm() {
       <div className="flex justify-center">
         <Button
           type="submit"
-          className="w-full bg-[#247BA0] hover:bg-[#134658]"
+          className="w-full hover:cursor-pointer"
         >
-          Selesai
+          Simpan
         </Button>
       </div>
     </form>

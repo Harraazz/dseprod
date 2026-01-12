@@ -35,7 +35,9 @@
     ".next/types/**/*.ts",
     "app/api/daerah/route.ts",
     "lib/prisma.ts",
-    "lib/seed.ts"
+    "lib/seed.ts",
+    "scripts/convert-quiz.js",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

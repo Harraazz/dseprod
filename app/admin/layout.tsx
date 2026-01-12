@@ -25,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <AdminSidebar />
-      <main className="bg-slate-100 w-full">
+      <main className="bg-slate-100 w-full overflow-hidden">
         <SidebarTrigger className="absolute top-5 md:hidden mb-4" />
         {children}
       </main>

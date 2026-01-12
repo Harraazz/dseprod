@@ -1,22 +1,9 @@
 import React from "react";
-import Image from "next/image";
-import Cardnews from "@/components/CardNews";
-import { LucideProps } from "lucide-react";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import Cardnews from "@/components/CardNews"
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  //   CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 
 function Berita() {

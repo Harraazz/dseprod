@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Bj from "@/components/Bannerjudul";
 import Footer from "@/components/Ftr";
@@ -12,7 +10,7 @@ export default function RootLayout({
   return (
     <>
       <Navbar />
-      <Bj title="NEWS" />
+      <Bj title="Lokasi" />
       <div>{children}</div>
       <Footer />
     </>

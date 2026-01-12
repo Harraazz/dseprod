@@ -31,3 +31,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "server error" }, { status: 500 });
   }
 }
+export const runtime = "nodejs"; // pastikan pakai Node.js runtime

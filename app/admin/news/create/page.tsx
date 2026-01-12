@@ -6,7 +6,7 @@ import { ChevronLeft } from 'lucide-react'
 
 import { useRouter } from 'next/navigation';
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   return (
     <div className="font-regular">
@@ -27,7 +27,7 @@ const page = () => {
         <h1 className='absolute font-bold top-1/2 translate-x-12 -translate-y-1/2 text-lg text-black '>Berita</h1>
       </div>
       <div className="h-250 overflow-y-hidden px-8 mb-8 mt-5">
-        <div className="h-full w-full p-5 bg-white rounded-xl gap-4">
+        <div className="h-full w-full rounded-xl gap-4">
           <CreateForm />
         </div>
       </div>
@@ -35,4 +35,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

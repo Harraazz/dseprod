@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useMemo } from "react"
+import React, { useState, useMemo, useEffect } from "react"
 import { ArrowUpDown, Search, Pencil, Trash2, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -12,81 +12,24 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Input } from "@/components/ui/input"
+import { useRouter } from "next/navigation"
 
-import { useRouter } from 'next/navigation';
-
-type News = {
+type Cabang = {
+  id: number
   title: string
   content: string
   date: string
-  status: "Aktif" | "Tidak Aktif"
+  status: "Aktif" | "Nonaktif"
 }
 
-const initialData: News[] = [
-  {
-    title: "Lorem Ipsum",
-    content: "Lorem ipsum dolor sit amet consectetur.",
-    date: "2025-08-10",
-    status: "Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Gravida pharetra dignissim mi magnis nonl.",
-    date: "2025-08-12",
-    status: "Tidak Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Lorem ipsum dolor sit amet consectetur.",
-    date: "2025-08-11",
-    status: "Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Berita tambahan untuk testing pagination.",
-    date: "2025-08-15",
-    status: "Tidak Aktif",
-  },
-    {
-    title: "Lorem Ipsum",
-    content: "Berita tambahan untuk testing pagination.",
-    date: "2025-08-15",
-    status: "Tidak Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Lorem ipsum dolor sit amet consectetur.",
-    date: "2025-08-11",
-    status: "Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Lorem ipsum dolor sit amet consectetur.",
-    date: "2025-08-11",
-    status: "Aktif",
-  },
-  {
-    title: "Lorem Ipsum",
-    content: "Satu lagi contoh berita dummy.",
-    date: "2025-08-18",
-    status: "Aktif",
-  },
-    {
-    title: "Lorem Ipsum",
-    content: "Berita tambahan untuk testing pagination.",
-    date: "2025-08-15",
-    status: "Tidak Aktif",
-  },
-]
-
 export default function LocationCabangTable() {
-  const router = useRouter();
-  const [data] = useState(initialData)
+  const router = useRouter()
+  const [data, setData] = useState<Cabang[]>([])
   const [search, setSearch] = useState("")
-  const [sortConfig, setSortConfig] = useState<{ key: keyof News; direction: "asc" | "desc" }>({
-  key: "date",
-  direction: "desc",
-})
+  const [sortConfig, setSortConfig] = useState<{ key: keyof Cabang; direction: "asc" | "desc" }>({
+    key: "date",
+    direction: "desc",
+  })
   const [page, setPage] = useState(1)
   const rowsPerPage = 6
 
@@ -110,7 +53,10 @@ export default function LocationCabangTable() {
             : new Date(b.date).getTime() - new Date(a.date).getTime()
         }
         if (sortConfig.key === "status") {
-          const order = { Aktif: 1, "Tidak Aktif": 2 }
+          const order: Record<string, number> = { 
+            "Aktif": 1, 
+            "Nonaktif": 2 
+          };
           return sortConfig.direction === "asc"
             ? order[a.status] - order[b.status]
             : order[b.status] - order[a.status]
@@ -125,13 +71,61 @@ export default function LocationCabangTable() {
   const totalPages = Math.ceil(sortedData.length / rowsPerPage)
   const paginatedData = sortedData.slice((page - 1) * rowsPerPage, page * rowsPerPage)
 
-  const sortData = (key: keyof News) => {
+  const sortData = (key: keyof Cabang) => {
     let direction: "asc" | "desc" = "asc"
     if (sortConfig && sortConfig.key === key && sortConfig.direction === "asc") {
       direction = "desc"
     }
     setSortConfig({ key, direction })
   }
+
+  useEffect(() => {
+  const loadCabang = async () => {
+    try {
+      const res = await fetch("/api/cabang")
+      const json = await res.json()
+
+      const list = Array.isArray(json) ? json : json.data
+
+      const mapped: Cabang[] = (list || []).map((c: any) => ({
+        id: c.id,
+        title: c.daerah?.nama_daerah ?? "—",
+        content: c.alamat,
+        date: c.tanggal_dibuka,
+        status: c.status,
+      }))
+
+      setData(mapped)
+    } catch (err) {
+      console.error("Gagal load cabang:", err)
+      setData([])
+    }
+  }
+
+  loadCabang()
+}, [])
+
+const handleDelete = async (id: number) => {
+  const confirmDelete = confirm("Yakin ingin menghapus cabang ini?");
+  if (!confirmDelete) return;
+
+  try {
+    const res = await fetch(`/api/cabang/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!res.ok) {
+      throw new Error("Gagal menghapus data");
+    }
+
+    // Refresh data setelah delete
+    setData((prev) => prev.filter((item) => item.id !== id));
+  } catch (error) {
+    alert("Terjadi kesalahan saat menghapus cabang");
+    console.error(error);
+  }
+};
+
 
   return (
     <div className="space-y-4">
@@ -155,7 +149,7 @@ export default function LocationCabangTable() {
             <Button
             onClick={() => router.push("/admin/location/cabang/create")}className="bg-yellow-500 hover:bg-yellow-600 text-white flex items-center gap-2 ">
               <Plus className="h-4 w-4" />
-              Buat berita baru
+              Buat cabang baru
             </Button>
         </div>
 
@@ -204,8 +198,14 @@ export default function LocationCabangTable() {
                   </span>
                 </TableCell>
                 <TableCell className="flex gap-2 mt-2">
-                  <Pencil className="w-4 h-4 text-orange-500 cursor-pointer" />
-                  <Trash2 className="w-4 h-4 text-red-500 cursor-pointer" />
+                  <Pencil
+                  className="w-4 h-4 text-orange-500 cursor-pointer"
+                  onClick={() => router.push(`/admin/location/cabang/${item.id}/edit`)}
+                  />
+                  <Trash2
+                  className="w-4 h-4 text-red-500 cursor-pointer"
+                  onClick={() => handleDelete(item.id)}
+                  />
                 </TableCell>
               </TableRow>
             ))}

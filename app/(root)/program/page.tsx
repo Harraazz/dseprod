@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Bj from "@/components/Bannerjudul";
 import Footer from "@/components/Ftr";
-import Image from "next/image";
 import Cj from "@/components/CardPanjang";
 
 function page() {

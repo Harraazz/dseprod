@@ -26,24 +26,24 @@ export function middleware(req: NextRequest) {
     }
   }
 
-  // if (pathname === "/admin/regis") {
-  //   const cookie = req.headers.get("cookie") || "";
-  //   const token = cookie.split(";").map(s=>s.trim()).find(s=>s.startsWith("token="))?.split("=")[1];
-  //   if (!token) {
-  //     const loginUrl = new URL("/login", req.url);
-  //     return NextResponse.redirect(loginUrl);
-  //   }
+  if (pathname === "/admin/regis") {
+    const cookie = req.headers.get("cookie") || "";
+    const token = cookie.split(";").map(s=>s.trim()).find(s=>s.startsWith("token="))?.split("=")[1];
+    if (!token) {
+      const loginUrl = new URL("/login", req.url);
+      return NextResponse.redirect(loginUrl);
+    }
 
-  //   const payload = verifyJwt(token);
-  //   if (!payload) {
-  //     return NextResponse.redirect(new URL("/login", req.url));
-  //   }
+    const payload = verifyJwt(token);
+    if (!payload) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
 
-  //   // require admin role
-  //   if (payload.role !== "ADMIN") {
-  //     return NextResponse.redirect(new URL("/not-found", req.url));
-  //   }    
-  // }
+    // require admin role
+    if (payload.role !== "ADMIN") {
+      return NextResponse.redirect(new URL("/not-found", req.url));
+    }    
+  }
 
   return NextResponse.next();
 }
@@ -51,3 +51,5 @@ export function middleware(req: NextRequest) {
 export const config = {
   matcher: ["/admin/:path*"]
 };
+
+export const runtime = "nodejs"; // pastikan pakai Node.js runtime

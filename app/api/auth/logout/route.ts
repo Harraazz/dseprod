@@ -7,3 +7,4 @@ export async function POST( req: Request ) {
   res.headers.set("Set-Cookie", removeTokenCookie());
   return res;
 }
+export const runtime = "nodejs"; // pastikan pakai Node.js runtime

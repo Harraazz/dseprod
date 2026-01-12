@@ -1,112 +1,108 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 
-const newsData = [
-  {
-    slug: "judul-berita-pertama",
-    title: "Title News",
-    date: "12 August 2025",
-    content1:
-      "Lorem ipsum dolor sit amet consectetur. Gravida pharetra dignissim mi magnis nonLorem ipsum dolor sit amet consectetur.",
-    content2:
-      "Lorem ipsum dolor sit amet consectetur. Gravida pharetra dignissim mi magnis nonLorem ipsum dolor sit amet consectetur.",
-    content3:
-      "Lorem ipsum dolor sit amet consectetur. Gravida pharetra dignissim mi magnis nonLorem ipsum dolor sit amet consectetur.",
-    image1: "/images/news-1.jpg",
-    image2: "/images/news-2.jpg",
-  },
-  {
-    slug: "judul-berita-kedua",
-    title: "Another News",
-    date: "13 August 2025",
-    content1:
-      "Ini berita kedua. Lorem ipsum dolor sit amet consectetur. Gravida pharetra dignissim mi magnis non.",
-    content2:
-      "Konten lanjutan berita kedua. Gravida pharetra dignissim mi magnis nonLorem ipsum dolor sit amet.",
-    content3:
-      "Penutup berita kedua. Gravida pharetra dignissim mi magnis nonLorem ipsum dolor sit amet consectetur.",
-    image1: "/images/news-3.jpg",
-    image2: "/images/news-4.jpg",
-  },
-];
+type Berita = {
+  id: string;
+  judul: string;
+  isi: string;
+  tanggal: string;
+  gambar_url: string | null;
+};
 
-export default function NewsDetail({ params }: { params: { slug: string } }) {
-  const news = newsData.find((n) => n.slug === params.slug);
+export default function DetailBeritaPage() {
+  const params = useParams();
+  const [berita, setBerita] = useState<Berita | null>(null);
+  const [loading, setLoading] = useState(true);
+  console.log(params.slug);
 
-  if (!news) {
+  const formatHtml = (html: string) => {
+  return html.replace(/<p><\/p>/g, "<p>&nbsp;</p>");
+};
+
+  useEffect(() => {
+    const fetchBerita = async () => {
+      try {
+        const res = await fetch(
+          `${window.location.origin}/api/public/berita/${params.slug}`,
+          { cache: "no-store" }
+        );
+
+        if (!res.ok) throw new Error("Berita tidak ditemukan");
+
+        const data = await res.json();
+        setBerita(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBerita();
+  }, [params.id]);
+
+  if (loading) {
     return (
-      <main className="max-w-5xl mx-auto px-6 py-16">
-        <h1 className="text-3xl font-semibold">News not found</h1>
-      </main>
+      <section className="container mx-auto px-40 py-12 animate-pulse">
+        <div className="h-[400px] bg-gray-200 rounded-xl mb-8" />
+        <div className="h-6 w-1/2 bg-gray-200 rounded mb-4" />
+        <div className="h-4 w-32 bg-gray-200 rounded mb-8" />
+        <div className="space-y-4">
+          <div className="h-4 bg-gray-200 rounded" />
+          <div className="h-4 bg-gray-200 rounded w-5/6" />
+          <div className="h-4 bg-gray-200 rounded w-4/6" />
+        </div>
+      </section>
     );
   }
 
+  if (!berita) return null;
+
   return (
-    <main className="max-w-5xl mx-auto px-6 py-16 space-y-12">
-      {/* ====== Judul dan Tanggal ====== */}
-      <div className="flex justify-between items-start">
-        <h1 className="text-3xl font-semibold">{news.title}</h1>
-        <p className="text-sm text-gray-500">{news.date}</p>
-      </div>
+    <>
+      {/* CONTENT */}
+      <section className="container mx-auto px-8 md:px-20 lg:px-40 py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-2">
+            {berita.judul}
+          </h2>
 
-      {/* ====== Paragraf Pembuka ====== */}
-      <p className="text-gray-700 leading-relaxed">{news.content1}</p>
+          <p className="text-center text-sm text-gray-500 mb-10">
+            {new Date(berita.tanggal).toLocaleDateString("id-ID", {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            })}
+          </p>
 
-      {/* ====== Gambar dan paragraf ====== */}
-      <div className="grid md:grid-cols-2 gap-6 items-center">
-        <Image
-          src={news.image1}
-          alt="News Image"
-          width={500}
-          height={300}
-          className="rounded-lg object-cover"
-        />
-        <p className="text-gray-700 leading-relaxed">{news.content2}</p>
-      </div>
+          {/* GAMBAR BERITA */}
+          {berita.gambar_url && (
+            <Image
+              src={berita.gambar_url}
+              alt={berita.judul}
+              width={1920}
+              height={1080}
+              className="object-cover rounded-xl mb-8 mx-auto"
+            />
+          )}
 
-      {/* ====== Gambar Lebar Penuh ====== */}
-      <div className="w-full">
-        <Image
-          src={news.image2}
-          alt="News Banner"
-          width={900}
-          height={400}
-          className="rounded-lg object-cover w-full"
-        />
-      </div>
-
-      {/* ====== Paragraf Penutup ====== */}
-      <p className="text-gray-700 leading-relaxed">{news.content3}</p>
-
-      {/* ====== Section Berita Lain ====== */}
-      <section className="pt-8">
-        <h2 className="text-2xl font-semibold mb-6">NEWS</h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {newsData
-            .filter((n) => n.slug !== params.slug)
-            .map((n) => (
-              <a
-                key={n.slug}
-                href={`/news/berita/${n.slug}`}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition block"
-              >
-                <Image
-                  src={n.image1}
-                  alt={n.title}
-                  width={400}
-                  height={250}
-                  className="object-cover w-full h-40"
-                />
-                <div className="p-4">
-                  <h3 className="font-semibold text-base mb-2">{n.title}</h3>
-                  <p className="text-sm text-gray-600 line-clamp-2">
-                    {n.content1}
-                  </p>
-                </div>
-              </a>
-            ))}
+          {/* ISI BERITA (HTML dari Tiptap) */}
+          <article
+            className="
+                prose 
+                prose-lg 
+                prose-berita 
+                max-w-none
+                prose-br:content-['']
+                prose-img:my-6
+                prose-img:rounded-xl"
+            dangerouslySetInnerHTML={{ __html: formatHtml(berita.isi) }}
+          />
         </div>
       </section>
-    </main>
+    </>
   );
 }

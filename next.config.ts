@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    // Jika ada, coba matikan optimizeCss atau lightningcss
+    optimizeCss: false, 
+    serverSourceMaps: false,
+  },
 };
 
 export default nextConfig;

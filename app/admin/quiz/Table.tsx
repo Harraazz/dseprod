@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useMemo } from "react"
-import { ArrowUpDown, Search, Eye, Pencil, Trash2, Plus } from "lucide-react"
+import { ArrowUpDown, Search, Eye, Trash2, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Table,

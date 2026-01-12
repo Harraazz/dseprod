@@ -7,6 +7,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
+import Image from "next/image";
 
 import {
   Form,
@@ -24,7 +25,7 @@ import { Label } from "@/components/ui/label";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { CalendarIcon } from "lucide-react";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 // --- Zod schema ---
 const days = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"] as const;
@@ -34,7 +35,9 @@ const schema = z.object({
   alamat: z.string().min(1, "Alamat wajib diisi"),
   mapsIframe: z.string().optional().or(z.literal("")),
   status: z.string().min(1, "Status wajib diisi"),
-  tanggalDibuka: z.date({ required_error: "Tanggal dibuka wajib dipilih" }),
+  tanggalDibuka: z.date().refine((date) => date !== null, {
+  message: "Tanggal dibuka wajib dipilih",
+  }),
   namaPenanggung: z.string().min(1, "Nama penanggung jawab wajib diisi"),
   emailKontak: z.string().email("Masukkan email yang valid"),
   nomorKontak: z.string().min(4, "Nomor kontak terlalu pendek"),
@@ -60,6 +63,8 @@ export default function AdminLocationForm() {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [iframePreview, setIframePreview] = useState<string | null>(null);
 
+  const [daerahList, setDaerahList] = useState<{ id: number; nama_daerah: string }[]>([]);
+
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -81,7 +86,6 @@ export default function AdminLocationForm() {
   const {
     handleSubmit,
     control,
-    register,
     setValue,
     watch,
     formState: { errors, isSubmitting },
@@ -91,7 +95,35 @@ export default function AdminLocationForm() {
   const watchGambar = watch("gambar");
   const watchMaps = watch("mapsIframe");
 
-  // preview image when file chosen
+useEffect(() => {
+  const loadDaerah = async () => {
+    try {
+      const res = await fetch("/api/daerah");
+      if (!res.ok) {
+        console.error("Gagal load daerah:", res.status);
+        setDaerahList([]);
+        return;
+      }
+
+      const data = await res.json();
+
+      if (Array.isArray(data)) {
+        setDaerahList(data);
+      } else if (Array.isArray(data.data)) {
+        setDaerahList(data.data);
+      } else {
+        console.error("Format data daerah tidak valid:", data);
+        setDaerahList([]);
+      }
+    } catch (err) {
+      console.error("Error fetch daerah:", err);
+      setDaerahList([]);
+    }
+  };
+
+  loadDaerah();
+}, []);
+
   useEffect(() => {
     if (watchGambar && watchGambar instanceof File) {
       const url = URL.createObjectURL(watchGambar);
@@ -115,40 +147,43 @@ export default function AdminLocationForm() {
     }
   }, [watchMaps]);
 
-  const onSubmit = async (values: FormValues) => {
-    try {
-      // Prepare FormData for file upload
-      const formData = new FormData();
-      formData.append("namaKota", values.namaKota);
-      formData.append("alamat", values.alamat);
-      formData.append("mapsIframe", values.mapsIframe ?? "");
-      formData.append("status", values.status);
-      formData.append("tanggalDibuka", values.tanggalDibuka.toISOString());
-      formData.append("namaPenanggung", values.namaPenanggung);
-      formData.append("emailKontak", values.emailKontak);
-      formData.append("nomorKontak", values.nomorKontak);
-      formData.append("hariOperasional", JSON.stringify(values.hariOperasional));
-      formData.append("jamBuka", values.jamBuka);
-      formData.append("jamTutup", values.jamTutup);
-      if (values.gambar instanceof File) {
-        formData.append("gambar", values.gambar);
-      }
+const onSubmit = async (values: FormValues) => {
+  try {
+    const formData = new FormData();
 
-      // Demo: print entries (replace with fetch('/api/location'...) in production)
-      console.log("Submitting Location (FormData):");
-      for (const pair of (formData as any).entries()) {
-        console.log(pair[0], pair[1]);
-      }
+    formData.append("daerah_id", values.namaKota);
+    formData.append("alamat", values.alamat);
+    formData.append("maps_iframe", values.mapsIframe ?? "");
+    formData.append("status", values.status);
+    formData.append("tanggal_dibuka", values.tanggalDibuka.toISOString());
+    formData.append("nama_penanggung", values.namaPenanggung);
+    formData.append("email_kontak", values.emailKontak);
+    formData.append("nomor_kontak", values.nomorKontak);
+    formData.append("hari_operasional", JSON.stringify(values.hariOperasional));
+    formData.append("jam_buka", values.jamBuka);
+    formData.append("jam_tutup", values.jamTutup);
 
-      // Here you would call your API, e.g.:
-      // await fetch('/api/location', { method: 'POST', body: formData });
-
-      // On success redirect to /admin/location/daerah
-      router.push("/admin/location/daerah");
-    } catch (err) {
-      console.error(err);
+    if (values.gambar instanceof File) {
+      formData.append("gambar", values.gambar);
     }
-  };
+
+    const res = await fetch("/api/cabang", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      console.error(err);
+      return;
+    }
+
+    router.push("/admin/location/cabang");
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
   return (
     <div className="w-full mx-auto p-8 space-y-6 font-regular">
@@ -166,9 +201,20 @@ export default function AdminLocationForm() {
                 <FormItem>
                   <FormLabel>Nama Kota <span className="text-red-500">*</span></FormLabel>
                   <FormControl>
-                    <Input placeholder="Contoh: Jakarta" {...field} />
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Pilih kota / daerah" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {Array.isArray(daerahList) && daerahList.map((d) => (
+                          <SelectItem key={d.id} value={String(d.id)}>
+                            {d.nama_daerah}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </FormControl>
-                  <FormMessage>{errors.namaKota?.message}</FormMessage>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -182,7 +228,7 @@ export default function AdminLocationForm() {
                   <FormControl>
                     <Textarea placeholder="Alamat lengkap lokasi" {...field} rows={4} />
                   </FormControl>
-                  <FormMessage>{errors.alamat?.message}</FormMessage>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -200,7 +246,7 @@ export default function AdminLocationForm() {
                       rows={3}
                     />
                   </FormControl>
-                  <FormMessage>{errors.mapsIframe?.message}</FormMessage>
+                  <FormMessage />
                   {iframePreview && (
                     <div className="mt-3 border w-150 rounded overflow-hidden">
                       <div
@@ -221,20 +267,21 @@ export default function AdminLocationForm() {
                   <FormItem>
                     <FormLabel>Status <span className="text-red-500">*</span></FormLabel>
                     <FormControl>
-                      <Select>
+                      <Select value={field.value} onValueChange={field.onChange}>
                         <SelectTrigger className="w-full">
                           <SelectValue placeholder="Pilih status" />
                         </SelectTrigger>
-                        <SelectContent {...field}>
+                        <SelectContent>
                           <SelectItem value="Aktif">Aktif</SelectItem>
-                          <SelectItem value="Nonaktif" defaultChecked>Tidak Aktif</SelectItem>
+                          <SelectItem value="Nonaktif">Tidak Aktif</SelectItem>
                         </SelectContent>
                       </Select>
                     </FormControl>
-                    <FormMessage>{errors.status?.message}</FormMessage>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
+
 
               <FormField
                 control={control}
@@ -270,7 +317,7 @@ export default function AdminLocationForm() {
                         />
                       </PopoverContent>
                     </Popover>
-                    <FormMessage>{errors.tanggalDibuka?.message?.toString()}</FormMessage>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -290,7 +337,7 @@ export default function AdminLocationForm() {
                   <FormControl>
                     <Input placeholder="Nama penanggung jawab" {...field} />
                   </FormControl>
-                  <FormMessage>{errors.namaPenanggung?.message}</FormMessage>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -305,7 +352,7 @@ export default function AdminLocationForm() {
                     <FormControl>
                       <Input placeholder="email@contoh.com" {...field} />
                     </FormControl>
-                    <FormMessage>{errors.emailKontak?.message}</FormMessage>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -319,7 +366,7 @@ export default function AdminLocationForm() {
                     <FormControl>
                       <Input placeholder="+62..." {...field} />
                     </FormControl>
-                    <FormMessage>{errors.nomorKontak?.message}</FormMessage>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -333,32 +380,34 @@ export default function AdminLocationForm() {
                 <Controller
                   control={control}
                   name="hariOperasional"
-                  render={({ field }) =>
-                    days.map((d) => {
-                      const checked = field.value?.includes(d);
-                      return (
-                        <Label
-                          key={d}
-                          className={`flex items-center gap-2 p-2 rounded-md border cursor-pointer select-none ${
-                            checked ? "bg-primary/10 border-primary" : "hover:border-gray-200"
-                          }`}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={!!checked}
-                            onChange={(e) => {
-                              const next = new Set(field.value || []);
-                              if (e.target.checked) next.add(d);
-                              else next.delete(d);
-                              field.onChange(Array.from(next));
-                            }}
-                            className="h-4 w-4"
-                          />
-                          <span className="text-sm">{d}</span>
-                        </Label>
-                      );
-                    })
-                  }
+                  render={({ field }) => (
+                    <div className="contents">
+                      {days.map((d) => {
+                        const checked = field.value?.includes(d);
+                        return (
+                          <Label
+                            key={d}
+                            className={`flex items-center gap-2 p-2 rounded-md border cursor-pointer select-none ${
+                              checked ? "bg-primary/10 border-primary" : "hover:border-gray-200"
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={!!checked}
+                              onChange={(e) => {
+                                const next = new Set(field.value || []);
+                                if (e.target.checked) next.add(d);
+                                else next.delete(d);
+                                field.onChange(Array.from(next));
+                              }}
+                              className="h-4 w-4"
+                            />
+                            <span className="text-sm">{d}</span>
+                          </Label>
+                        );
+                      })}
+                    </div>
+                  )}
                 />
               </div>
               {errors.hariOperasional && (
@@ -377,7 +426,7 @@ export default function AdminLocationForm() {
                     <FormControl>
                       <Input type="time" {...field} />
                     </FormControl>
-                    <FormMessage>{errors.jamBuka?.message}</FormMessage>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -391,7 +440,7 @@ export default function AdminLocationForm() {
                     <FormControl>
                       <Input type="time" {...field} />
                     </FormControl>
-                    <FormMessage>{errors.jamTutup?.message}</FormMessage>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -418,11 +467,11 @@ export default function AdminLocationForm() {
                       className="w-full h-14 font-regular text-2xl text-gray-500 text-center items-center justify-center p-3 border-2"
                     />
                   </FormControl>
-                  <FormMessage>{errors.gambar?.message}</FormMessage>
+                  <FormMessage />
 
                   {selectedFileName && previewUrl && (
                     <div className="mt-3 flex items-center gap-3">
-                      <img src={previewUrl} alt="preview" className="h-20 w-20 object-cover rounded-md border" />
+                      <Image src={previewUrl} alt="preview" className="h-20 w-20 object-cover rounded-md border" />
                       <div>
                         <p className="text-sm font-medium">{selectedFileName}</p>
                         <p className="text-xs text-muted-foreground">Preview gambar yang akan diupload</p>

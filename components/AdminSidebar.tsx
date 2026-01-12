@@ -6,6 +6,7 @@ import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarHead
 import { Button } from "@/components/ui/button"
 import { MapPinned, Home, Newspaper, Blocks, ChevronDown, DoorOpen } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 const items = [
   { title: "Beranda", url: "/admin/dashboard", icon: Home },
@@ -45,7 +46,7 @@ export default function AdminSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <img src="/DSE Logo 1.png" alt="logo" className="w-40 py-6 mx-auto object-contain" />
+        <Image src="/DSE Logo 1.png" alt="logo" className="w-40 py-6 mx-auto object-contain" />
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>

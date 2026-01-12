@@ -9,9 +9,7 @@ import Iklan from "@/app/(root)/Kemitraan/Iklan";
 import Cards from "@/app/(root)/Kemitraan/Kartu";
 import Syarat from "@/app/(root)/Kemitraan/Syarat";
 import Image from "next/image";
-import wave from "@/public/wave.svg";
 import {
-  GraduationCap,
   BookCheck,
   ToolCase,
   School,
@@ -20,7 +18,7 @@ import {
   Handshake,
 } from "lucide-react";
 
-function page() {
+function Page() {
   const data = [
     {
       title: "English",
@@ -181,4 +179,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

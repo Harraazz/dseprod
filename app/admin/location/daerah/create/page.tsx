@@ -6,7 +6,7 @@ import { ChevronLeft } from 'lucide-react'
 
 import { useRouter } from 'next/navigation';
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   return (
     <div className="font-regular">
@@ -35,4 +35,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

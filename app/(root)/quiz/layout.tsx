@@ -10,8 +10,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const path = usePathname();
-  const isBeritaPage = path.includes("/news/berita");
 
   return (
     <>

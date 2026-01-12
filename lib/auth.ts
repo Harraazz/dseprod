@@ -56,3 +56,4 @@ export function userPayloadFromUser(user: User) {
     role: user?.role
   };
 }
+export const runtime = "nodejs"

@@ -23,3 +23,4 @@ export async function GET(req: Request) {
     return NextResponse.json({ user: null });
   }
 }
+export const runtime = "nodejs"; // pastikan pakai Node.js runtime

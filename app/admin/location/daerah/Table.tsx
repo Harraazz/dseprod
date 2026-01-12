@@ -71,7 +71,10 @@ export default function LocationDaerahTable() {
     if (sortConfig) {
       filtered.sort((a, b) => {
         if (sortConfig.key === "status") {
-          const order = {"Aktif": 1, "Nonaktif": 2 }
+          const order: Record<string, number> = { 
+            "Aktif": 1, 
+            "Nonaktif": 2 
+          };
           return sortConfig.direction === "asc"
             ? order[a.status] - order[b.status]
             : order[b.status] - order[a.status]

@@ -1,0 +1,4 @@
+# Abaikan folder hasil generate Prisma
+lib/generated/
+.next/
+node_modules/

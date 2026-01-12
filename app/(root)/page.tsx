@@ -8,48 +8,10 @@ import Lokasi from "@/components/Lokasi";
 import Berita from "@/components/Berita";
 import Footer from "@/components/Ftr";
 import { Button } from "@/components/ui/button";
-import Cj from "@/components/CardPanjang";
 
 import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
 
 function Home() {
-  const data = [
-    {
-      title: "English",
-      description:
-        "Mengembangkan empat aspek literasi (reading, writing, speaking, listening) sambil membangun kepercayaan diri siswa ",
-      image: "/Bing-01.png",
-      color: "#20B9C3",
-    },
-    {
-      title: "Calistung",
-      description:
-        "Membantu anak mengenal huruf dan angka sebagai persiapan optimal memasuki pendidikan formal.",
-      image: "/calistung-01.png",
-      color: "#F3AF32",
-    },
-    {
-      title: "Matematika",
-      description:
-        "Memperkuat kemampuan dasar matematis dan mengembangkan pola pikir kritis",
-      image: "/math.png",
-      color: "#D94848",
-    },
-    {
-      title: "Math",
-      description:
-        "Memperkuat kemampuan dasar matematis dan mengembangkan pola pikir kritis",
-      image: "/math.png",
-      color: "#9BC24C",
-    },
-    {
-      title: "DSE Edu",
-      description:
-        "Program pengembangan internal DSE yang dirancang khusus untuk siswa SMP hingga SMA sebagai solusi dukungan tambahan dalam memahami materi sekolah. DSE Edu menggunakan sistem semi private dengan tiga pilihan kelas: Regular (pembelajaran rutin mingguan), Intensif (untuk kebutuhan akademik padat), dan Weekend (fleksibel untuk siswa sibuk).",
-      image: "/dse-edu.png",
-      color: "#157A84",
-    },
-  ];
 
   const lokasiData = [
     { gambar: "/DSE Logo 1.png", footer: "BEKASI" },

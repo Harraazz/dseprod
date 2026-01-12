@@ -1,55 +1,33 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { quizQuestions } from "@/data/quiz";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
+interface QuizQuestion {
+  id: number;
+  image: string;
+  question: string;
+  answer: string;
+  subject: string;
+  level: string;
+  KalimatMatematika?: string;
+}
+
 export default function Page() {
   // --- default soal agar tidak error ---
-  const [questions, setQuestions] = useState([
-    {
-      id: 1,
-      image: "/BG-2.jpg",
-      question: "Ada berapa banyak titik?",
-      answer: "8",
-    },
-    {
-      id: 2,
-      image: "/quiz/q2.png",
-      question: "Berapa jumlah kotak kosong?",
-      answer: "2",
-    },
-  ]);
-
+  const [hasSearched, setHasSearched] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answer, setAnswer] = useState("");
   const [score, setScore] = useState(0);
-  const [subject, setSubject] = useState("");
-  const [level, setLevel] = useState("");
-  const [filteredQuestions, setFilteredQuestions] = useState([]);
-
-  // --- ambil data dari API (jika sudah ada database) ---
-  useEffect(() => {
-    const loadQuestions = async () => {
-      try {
-        const res = await fetch("/api/quiz");
-        if (!res.ok) throw new Error("Gagal ambil data kuis");
-        const data = await res.json();
-        if (Array.isArray(data) && data.length > 0) {
-          setQuestions(data);
-        }
-      } catch (err) {
-        console.log(
-          "Gunakan default data karena API belum aktif:",
-          err.message
-        );
-      }
-    };
-    loadQuestions();
-  }, []);
-
+  const [subject, setSubject] = useState("Matematika");
+  const [level, setLevel] = useState("TK");
+  const [filteredQuestions, setFilteredQuestions] = useState<QuizQuestion[]>([]);
+  const [questions, setQuestions] = useState<QuizQuestion[]>(quizQuestions);
   // --- filter berdasarkan mata pelajaran dan level ---
   const handleSearch = () => {
+    setHasSearched(true);
     const filtered = questions.filter((q) => {
       const bySubject = subject ? q.subject === subject : true;
       const byLevel = level ? q.level === level : true;
@@ -85,7 +63,7 @@ export default function Page() {
   const handlePrev = () => {
     if (currentIndex > 0) setCurrentIndex((prev) => prev - 1);
   };
-
+  console.log(score);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#f8f9fc] px-4 py-10">
       {/* --- Header --- */}
@@ -107,8 +85,8 @@ export default function Page() {
         >
           <option value="">Pilih mata pelajaran</option>
           <option value="Matematika">Matematika</option>
-          <option value="Bahasa Indonesia">Bahasa Indonesia</option>
-          <option value="IPA">IPA</option>
+          <option value="Math">Math</option>
+          <option value="English">English</option>
         </select>
 
         <select
@@ -117,9 +95,14 @@ export default function Page() {
           className="border rounded-lg px-4 py-2 w-[392px] focus:outline-none focus:ring-2 focus:ring-teal-400"
         >
           <option value="">Pilih level</option>
-          <option value="1">Level 1</option>
-          <option value="2">Level 2</option>
-          <option value="3">Level 3</option>
+          <option value="TK">TK</option>
+          <option value="Kelas 1">Kelas 1</option>
+          <option value="Kelas 2">Kelas 2</option>
+          <option value="Kelas 3">Kelas 3</option>
+          <option value="Kelas 4">Kelas 4</option>
+          <option value="Kelas 5">Kelas 5</option>
+          <option value="Kelas 6">Kelas 3</option>
+          <option value="SMP">SMP</option>
         </select>
 
         <button
@@ -131,7 +114,13 @@ export default function Page() {
       </div>
 
       {/* --- Kartu Soal --- */}
-      {activeQuestions.length > 0 ? (
+      {!hasSearched ? (
+        <p className="text-gray-500 text-xl mt-10">
+          Pilih quiz terlebih dahulu
+        </p>
+        ) : ( 
+        <>
+        {activeQuestions.length > 0 ? (
         <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-5xl">
           <div className="flex justify-between items-center mb-4">
             <span className="bg-yellow-400 text-white px-3 py-1 rounded-md text-lg font-regular">
@@ -192,6 +181,9 @@ export default function Page() {
       ) : (
         <p className="text-gray-500">Belum ada soal untuk kategori ini.</p>
       )}
+      </>
+      )}
     </div>
+    
   );
 }

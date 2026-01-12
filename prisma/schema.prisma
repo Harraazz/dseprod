@@ -14,6 +14,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Berita {
+  id         Int      @id @default(autoincrement())
+  judul      String
+  slug       String   @unique
+  isi        String   @db.LongText
+  tanggal    DateTime
+  status     String   @default("Draft")
+  gambar_url String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
 model Daerah {
   id          Int      @id @default(autoincrement())
   nama_daerah String
@@ -35,7 +48,7 @@ model Cabang {
   daerah           Daerah   @relation(fields: [daerah_id], references: [id])
 
   alamat           String
-  maps_iframe      String?
+  maps_iframe      String?  @db.Text
   status           String
   tanggal_dibuka   DateTime
   nama_penanggung  String
@@ -43,7 +56,7 @@ model Cabang {
   nomor_kontak     String
   
   // Disimpan sebagai JSON string
-  hari_operasional String?  // contoh: ["Senin","Selasa","Rabu"]
+  hari_operasional String?
 
   jam_buka         String
   jam_tutup        String
