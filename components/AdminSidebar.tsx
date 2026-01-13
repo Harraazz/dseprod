@@ -46,7 +46,7 @@ export default function AdminSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <Image src="/DSE Logo 1.png" alt="logo" className="w-40 py-6 mx-auto object-contain" />
+        <Image src="/DSE Logo 1.png" width={1920} height={1080} alt="logo" className="w-40 py-6 mx-auto object-contain" />
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>

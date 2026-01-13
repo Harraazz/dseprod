@@ -8,7 +8,6 @@ import Lokasi from "@/components/Lokasi";
 import Berita from "@/components/Berita";
 import Footer from "@/components/Ftr";
 import { Button } from "@/components/ui/button";
-
 import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
 
 function Home() {

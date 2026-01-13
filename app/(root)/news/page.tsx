@@ -60,7 +60,7 @@ function Page() {
               key={i}
               className="flex flex-col md:flex-row gap-4 bg-white rounded-xl border p-4 animate-pulse"
             >
-              <div className="aspect-[16:9] max-w-[250px] max-h-[150px] w-full bg-gray-200 rounded-lg" />
+              <div className="aspect-[16/9] max-w-[250px] max-h-[150px] w-full bg-gray-200 rounded-lg" />
               <div className="flex flex-col gap-3 md:w-2/3">
                 <div className="h-5 w-2/3 bg-gray-200 rounded" />
                 <div className="h-4 w-full bg-gray-200 rounded" />
@@ -78,7 +78,7 @@ function Page() {
               className="flex flex-col md:flex-row gap-4 bg-white rounded-xl shadow-sm border hover:shadow-md transition p-4"
             >
               {/* Gambar */}
-              <div className="aspect-[16:9] max-w-[250px] max-h-[150px] w-full overflow-hidden rounded-lg">
+              <div className="aspect-[16/9] max-w-[250px] max-h-[150px] w-full overflow-hidden rounded-lg">
               {item.gambar_url ? (
                 <Image
                   src={item.gambar_url}
