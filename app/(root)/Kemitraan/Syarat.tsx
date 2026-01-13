@@ -19,7 +19,7 @@ function Syarat() {
             className="w-full object-cover"
           />
           <div className="pt-10 text-center">
-            <p className="text-gray-700 wrap-break-words text-2xl font-regular whitespace-normal">
+            <p className="text-gray-700 wrap-break-words text-[15px] md:text-2xl font-regular whitespace-normal">
               Memiliki lokasi yang siap digunakan sebagai pusat belajar
             </p>
           </div>
@@ -32,10 +32,10 @@ function Syarat() {
             alt="Minat Pendidikan"
             width={467}
             height={250}
-            className="w-full object-cover"
+            className="w-full object-cover "
           />
           <div className="pt-10 text-center">
-            <p className="text-gray-700 wrap-break-words text-2xl font-regular whitespace-normal">
+            <p className="text-gray-700 wrap-break-words text-[15px] md:text-2xl whitespace-normal">
               Memiliki minat dan komitmen di bidang pendidikan
             </p>
           </div>

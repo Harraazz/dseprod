@@ -8,7 +8,7 @@ interface JudulProps {
 
 function Bannerjudul({ title, subtitle }: JudulProps) {
   return (
-    <div className="relative w-full h-120">
+    <div className="relative w-full h-[260px] sm:h-[320px] md:h-[420px] lg:h-[480px]">
       {/* Background image */}
       <Image
         className="object-cover"
@@ -18,14 +18,29 @@ function Bannerjudul({ title, subtitle }: JudulProps) {
         priority
       />
 
-      {/* Overlay transparan */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black/50" />
 
-      {/* Konten overlay */}
-      <div className="relative z-10 flex flex-col items-start justify-center h-full px-32 text-white">
-        <h1 className="text-[64px] font-regular font-bold">{title}</h1>
+      {/* Content */}
+      <div
+        className="
+        relative z-10
+        flex flex-col
+        justify-center
+        h-full
+        px-4 sm:px-8 md:px-20 lg:px-32
+        text-white
+        text-center md:text-left
+      "
+      >
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold">
+          {title}
+        </h1>
+
         {subtitle && (
-          <h2 className="text-[64px] font-regular font-bold">{subtitle}</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold">
+            {subtitle}
+          </h2>
         )}
       </div>
     </div>

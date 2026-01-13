@@ -32,7 +32,7 @@ function Brand() {
       </div>
 
       {/* Deskripsi */}
-      <p className="text-justify text-[20px] text-gray-700 text-base leading-relaxed max-w-6xl mt-8">
+      <p className="text-justify text-[18px] md:text-[20px] text-gray-700 text-base leading-relaxed max-w-6xl mt-8">
         PT. Dwi Sarana Edukasi adalah perusahaan pendidikan yang berkomitmen
         menghadirkan layanan belajar berkualitas untuk anak-anak Indonesia. PT.
         Dwi Sarana Edukasi telah terbukti sebagai pioneer dalam industri

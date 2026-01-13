@@ -5,41 +5,37 @@ import { Instagram, Youtube, Facebook } from "lucide-react";
 function Ftr() {
   return (
     <footer className="relative w-full overflow-hidden shadow-[0_1px_50px_rgba(0,0,0,0.2)]">
-      {/* Background oval kiri */}
-      <div className="absolute left-10 top-30 w-[700px] h-[400px] rounded-[50%] bg-[#DA384A8F] blur-3xl opacity-70"></div>
-      {/* Background oval kanan */}
-      <div className="absolute right-10 top-30 w-[700px] h-[400px] rounded-[50%] bg-[#F0B343BF] blur-3xl opacity-70"></div>
+      {/* Background Blur Kiri */}
+      <div className="absolute -left-40 top-20 w-[400px] h-[300px] md:w-[700px] md:h-[400px] rounded-full bg-[#DA384A8F] blur-3xl opacity-70" />
 
-      {/* Glass effect container */}
+      {/* Background Blur Kanan */}
+      <div className="absolute -right-40 top-20 w-[400px] h-[300px] md:w-[700px] md:h-[400px] rounded-full bg-[#F0B343BF] blur-3xl opacity-70" />
+
+      {/* Glass Container */}
       <div className="relative z-10 mx-auto w-full">
         <div className="backdrop-blur-md bg-white/40 border-t border-white/20 rounded-t-2xl shadow-lg">
-          <div className="flex justify-center gap-10 p-10 text-black">
+          {/* Content */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 px-4 md:px-10 py-10 text-black">
             {/* Logo & Sosmed */}
-            <div className="col-span-1 space-y-3">
+            <div className="space-y-4">
               <Image
-                className="object-contain w-50"
+                src="/DSE Logo 1.png"
+                alt="Logo"
                 width={1280}
                 height={590}
-                src="/DSE Logo 1.png"
-                alt="Banner"
+                className="w-[160px] object-contain"
               />
               <div className="flex space-x-5 text-xl">
-                <i className="fab fa-instagram">
-                  <Instagram />
-                </i>
-                <i className="fab fa-youtube">
-                  <Youtube />
-                </i>
-                <i className="fab fa-facebook">
-                  <Facebook />
-                </i>
+                <Instagram className="cursor-pointer hover:text-pink-600 transition" />
+                <Youtube className="cursor-pointer hover:text-red-600 transition" />
+                <Facebook className="cursor-pointer hover:text-blue-600 transition" />
               </div>
             </div>
 
             {/* Programs */}
             <div>
-              <h3 className="font-bold">Programs</h3>
-              <ul className="mt-2 space-y-1 text-sm">
+              <h3 className="font-bold mb-2">Programs</h3>
+              <ul className="space-y-1 text-sm">
                 <li>English</li>
                 <li>Calistung</li>
                 <li>Matematika</li>
@@ -50,8 +46,8 @@ function Ftr() {
 
             {/* Lokasi */}
             <div>
-              <h3 className="font-bold">Lokasi</h3>
-              <ul className="mt-2 space-y-1 text-sm">
+              <h3 className="font-bold mb-2">Lokasi</h3>
+              <ul className="space-y-1 text-sm">
                 <li>Bekasi</li>
                 <li>Depok</li>
                 <li>Bandung</li>
@@ -62,8 +58,8 @@ function Ftr() {
 
             {/* Tentang Kami */}
             <div>
-              <h3 className="font-bold">Tentang Kami</h3>
-              <ul className="mt-2 space-y-1 text-sm">
+              <h3 className="font-bold mb-2">Tentang Kami</h3>
+              <ul className="space-y-1 text-sm">
                 <li>Lorem ipsum</li>
                 <li>Lorem ipsum</li>
                 <li>Lorem ipsum</li>
@@ -72,8 +68,8 @@ function Ftr() {
 
             {/* Kontak Kami */}
             <div>
-              <h3 className="font-bold">Kontak Kami</h3>
-              <ul className="mt-2 space-y-1 text-sm">
+              <h3 className="font-bold mb-2">Kontak Kami</h3>
+              <ul className="space-y-1 text-sm">
                 <li>Lorem ipsum</li>
                 <li>Lorem ipsum</li>
                 <li>Lorem ipsum</li>

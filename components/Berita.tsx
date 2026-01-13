@@ -1,5 +1,5 @@
 import React from "react";
-import Cardnews from "@/components/CardNews"
+import Cardnews from "@/components/CardNews";
 import {
   Carousel,
   CarouselContent,
@@ -10,41 +10,36 @@ function Berita() {
   return (
     <div className="mb-1 flex flex-col items-center justify-center">
       <Carousel className="w-full">
-        <CarouselContent className="flex gap-x-1 py-0">
-          <CarouselItem className="basis-1/4">
+        <CarouselContent className="flex gap-x-4 py-0">
+          <CarouselItem className="basis-full sm:basis-1/2 lg:basis-1/4">
             <Cardnews
               Gambar="/DSE Logo 1.png"
               title="lorem ipsum dolor sit amet"
-              bgColor=""
-              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus,
-          adipisci."
+              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
             />
           </CarouselItem>
-          <CarouselItem className="basis-1/4">
+
+          <CarouselItem className="basis-full sm:basis-1/2 lg:basis-1/4">
             <Cardnews
               Gambar="/DSE Logo 1.png"
               title="lorem ipsum dolor sit amet"
-              bgColor=""
-              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus,
-          adipisci."
+              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
             />
           </CarouselItem>
-          <CarouselItem className="basis-1/4">
+
+          <CarouselItem className="basis-full sm:basis-1/2 lg:basis-1/4">
             <Cardnews
               Gambar="/DSE Logo 1.png"
               title="lorem ipsum dolor sit amet"
-              bgColor=""
-              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus,
-          adipisci."
+              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
             />
           </CarouselItem>
-          <CarouselItem className="basis-1/4">
+
+          <CarouselItem className="basis-full sm:basis-1/2 lg:basis-1/4">
             <Cardnews
               Gambar="/DSE Logo 1.png"
               title="lorem ipsum dolor sit amet"
-              bgColor=""
-              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus,
-          adipisci."
+              description="Lorem ipsum, dolor sit amet consectetur adipisicing elit."
             />
           </CarouselItem>
         </CarouselContent>

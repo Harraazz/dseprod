@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Navbar from "@/components/Navbar";
 import ProbFix from "@/components/Bocil";
@@ -11,7 +13,6 @@ import { Button } from "@/components/ui/button";
 import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
 
 function Home() {
-
   const lokasiData = [
     { gambar: "/DSE Logo 1.png", footer: "BEKASI" },
     { gambar: "/DSE Logo 1.png", footer: "DEPOK" },
@@ -21,16 +22,22 @@ function Home() {
   ];
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Navbar />
       <Banner />
       <ProbFix />
-      <div className="grid grid-cols-12">
-        <div className=" col-span-8 text-start font-regular">
-          <div className="ms-50 mb-40 pr-3  flex flex-col align-middle justify-center ">
-            <p className="mt-6 text-[20px]  font-bold">Perkenalkan</p>
-            <h1 className="text-[40px] font-extrabold ">Dwi Sarana Edukasi</h1>
-            <p className="text-[20px] mr-4">
+
+      {/* ================= HERO ================= */}
+      <section className="grid grid-cols-1 md:grid-cols-12 items-center px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32">
+        <div className="col-span-12 md:col-span-8">
+          <div className="ms-4 md:ms-80 mb-10 md:mb-40 pr-3">
+            <p className="mt-6 text-[18px] md:text-[20px] font-bold">
+              Perkenalkan
+            </p>
+            <h1 className="text-[28px] md:text-[40px] font-extrabold">
+              Dwi Sarana Edukasi
+            </h1>
+            <p className="text-[16px] md:text-[20px]">
               Kami percaya setiap anak adalah bintang yang bersinar dengan
               caranya sendiri. Dengan pengalaman 15+ tahun mengelola program
               pendidikan berkualitas internasional, kami telah membantu ribuan
@@ -38,24 +45,32 @@ function Home() {
             </p>
           </div>
         </div>
-        <div className="col-span-4 ">
+
+        <div className="col-span-12 md:col-span-4 flex justify-center">
           <Image
-            className="object-contain"
+            className="object-contain w-[200px] md:w-[295px]"
             width={295}
             height={263}
             src="/Nulis.png"
             alt="Banner"
           />
         </div>
-      </div>
-      <div className="flex flex-col justify-center align-middle ">
-        <p className="text-center font-extrabold font-regular text-[44px] ms-38 mr-38">
+      </section>
+
+      {/* ================= VALUE ================= */}
+      <section className="container mx-auto px-4 md:px-20 sm:px-5 py-12">
+        <p className="text-center font-bold text-[26px] md:text-[35px]">
           Kami hadir sebagai solusi belajar yang dipercaya oleh ribuan keluarga.
         </p>
 
-        {/* Card With Icon */}
-        <div className="flex flex-col items-center justify-center mt-10 ">
-          <div className="grid grid-cols-2 gap-10">
+        <div className="flex justify-center">
+          <div
+            className=" grid
+                    grid-cols-1
+                    xl:grid-cols-2
+                    gap-6
+                     place-items-center"
+          >
             <Cards
               icon={GraduationCap}
               title="Sistem pembelajaran yang efektif"
@@ -86,57 +101,61 @@ function Home() {
             />
           </div>
         </div>
-        {/* Our Program  */}
-        <section className="container mx-auto px-40 py-12">
-          <h1 className="text-start font-bold font-regular text-[44px]">
-            OUR PROGRAM
-          </h1>
-          <div className="grid grid-cols-2 gap-6 pt-8">
-            {lokasiData.map((item, index) => {
-              const isLastOdd =
-                lokasiData.length % 2 !== 0 && index === lokasiData.length - 1;
+      </section>
 
-              return (
-                <div
-                  key={index}
-                  className={isLastOdd ? "col-span-2 flex justify-center" : ""}
-                >
-                  <Lokasi gambar={item.gambar} footer={item.footer} />
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      </div>
-      {/* banner awan */}
-      <div className="relative w-full mb-10 mt-10">
+      {/* ================= LOCATION ================= */}
+      <section className="container mx-auto px-4 md:px-20 py-12">
+        <h1 className="text-[28px] md:text-[40px] font-bold">OUR LOCATION</h1>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
+          {lokasiData.map((item, index) => {
+            const isLastOdd =
+              lokasiData.length % 2 !== 0 && index === lokasiData.length - 1;
+
+            return (
+              <div
+                key={index}
+                className={isLastOdd ? "sm:col-span-2 flex justify-center" : ""}
+              >
+                <Lokasi gambar={item.gambar} footer={item.footer} />
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ================= BANNER CTA ================= */}
+      <section className="relative w-full my-10">
         <Image
           src="/banner 2.png"
           alt="Banner"
           width={1280}
           height={337}
-          className="w-full h-100 object-cover"
+          className="w-full h-[200px] md:h-[337px] object-cover"
         />
-        <div className="absolute inset-0 flex flex-col items-center p-6  ">
-          <p className="text-[60px] font-regular font-extrabold pt-10 text-stroke-solid">
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+          <p className="lg:text-[50px] md:text-[30px] font-extrabold text-stroke-solid">
             Ayo uji serunya belajar bareng kami!
           </p>
-          <p className="text-[50px] font-extrabold text-center font-regular text-stroke-solid2">
+          <p className="lg:text-[50px] md:text-[30px] font-extrabold text-stroke-solid2">
             Ikuti quiz gratis sekarang!
           </p>
-          <Button variant="custom2" size={"custom2"} className=" mt-5">
+          <Button variant="custom2" size="custom2" className="mt-5">
             Pergi ke Quiz
           </Button>
         </div>
-      </div>
+      </section>
 
-      {/* News  */}
-      <section className="container mx-auto px-40 pt-12 pb-30">
-        <h1 className="text-start font-bold font-regular text-[44px]">NEWS</h1>
+      {/* ================= NEWS ================= */}
+      <section className="container mx-auto px-4 md:px-20 pt-12 pb-20">
+        <h1 className="text-[28px] md:text-[44px] font-bold">NEWS</h1>
         <Berita />
       </section>
+
       <Footer />
     </div>
   );
 }
+
 export default Home;

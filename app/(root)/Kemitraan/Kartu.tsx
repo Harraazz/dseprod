@@ -40,7 +40,7 @@ function Kartu({
   }
 
   return (
-    <Card className="w-full max-w-[400px] mx-auto border-none shadow-none">
+    <Card className="w-full max-w-200 mx-auto border-none shadow-none">
       <CardContent className="flex justify-center">
         <div
           className="rounded-3xl p-4 flex items-center justify-center"

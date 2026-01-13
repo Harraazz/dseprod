@@ -16,28 +16,45 @@ interface ProgramProps {
 
 function Program({ Gambar, title, bgColor = "#fff" }: ProgramProps) {
   return (
-    <div>
-      <Card
-        className="w-[340px] flex flex-col justify-center items-center h-[370px]"
-        style={{ backgroundColor: bgColor }}
+    <Card
+      className="
+        w-[340px] h-[370px]
+        flex flex-col items-center justify-center
+        sm:w-full sm:max-w-[340px]
+      "
+      style={{ backgroundColor: bgColor }}
+    >
+      {/* Header */}
+      <CardHeader className="text-center text-[32px] md:text-[40px] font-bold text-white">
+        {title}
+      </CardHeader>
+
+      {/* Content */}
+      <CardContent
+        className="
+          border-2 rounded-[8px]
+          flex justify-center items-end
+          bg-white
+          w-[280px] h-[200px]
+          sm:w-full sm:max-w-[280px]
+        "
       >
-        <CardHeader className="text-center justify-center text-[40px] font-regular font-bold text-white">
-          {title}
-        </CardHeader>
-        <CardContent className="border-2 rounded-[8px]  flex justify-center w-[280] h-[400px]  bg-white">
-          <Image
-            src={Gambar}
-            alt={title}
-            width={153}
-            height={189}
-            className="w-30 object-contain self-end"
-          />
-        </CardContent>
-        <CardFooter>
-          <Button variant="custom">Read More</Button>
-        </CardFooter>
-      </Card>
-    </div>
+        <Image
+          src={Gambar}
+          alt={title}
+          width={153}
+          height={189}
+          className="object-contain"
+        />
+      </CardContent>
+
+      {/* Footer */}
+      <CardFooter>
+        <Button variant="custom" className="sm:w-full">
+          Read More
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }
 

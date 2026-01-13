@@ -23,9 +23,10 @@ function Page() {
     {
       title: "English",
       description:
-        "Mengembangkan empat aspek literasi (reading, writing, speaking, listening) sambil membangun kepercayaan diri siswa ",
+        "Mengembangkan empat aspek literasi (reading, writing, speaking, listening) dan membangun kepercayaan diri ",
       image: "/Bing-01.png",
       color: "#20B9C3",
+      link: "/program/english",
     },
     {
       title: "Calistung",
@@ -33,6 +34,7 @@ function Page() {
         "Membantu anak mengenal huruf dan angka sebagai persiapan optimal memasuki pendidikan formal.",
       image: "/calistung-01.png",
       color: "#F3AF32",
+      link: "/program/calistung",
     },
     {
       title: "Matematika",
@@ -40,6 +42,7 @@ function Page() {
         "Memperkuat kemampuan dasar matematis dan mengembangkan pola pikir kritis",
       image: "/math.png",
       color: "#D94848",
+      link: "/program/matematika",
     },
     {
       title: "Math",
@@ -47,6 +50,7 @@ function Page() {
         "Memperkuat kemampuan dasar matematis dan mengembangkan pola pikir kritis",
       image: "/math.png",
       color: "#9BC24C",
+      link: "/program/math",
     },
     {
       title: "DSE Edu",
@@ -54,26 +58,36 @@ function Page() {
         "Program pengembangan internal DSE yang dirancang khusus untuk siswa SMP hingga SMA sebagai solusi dukungan tambahan dalam memahami materi sekolah. DSE Edu menggunakan sistem semi private dengan tiga pilihan kelas: Regular (pembelajaran rutin mingguan), Intensif (untuk kebutuhan akademik padat), dan Weekend (fleksibel untuk siswa sibuk).",
       image: "/dse-edu.png",
       color: "#157A84",
+      link: "/program/dse-edu",
     },
   ];
+
   return (
     <div>
       <Navbar />
-      {/* Banner Judul Halaman */}
-      <section className="relative flex items-center justify-center h-[500px]">
+
+      {/* BANNER */}
+      <section className="pt-20">
         <Bj title="PARTNERSHIP" />
       </section>
-      <section className="container py-10 pt-40">
+
+      {/* BRAND */}
+      <section className="container mx-auto py-10 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40">
         <Brand />
       </section>
-      <section className="px-50">
+
+      {/* BENEFIT */}
+      <section className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40">
         <Benefit />
       </section>
-      <section className="container mx-auto px-40 py-12">
-        <h1 className="text-center font-bold font-regular text-[44px] mb-6">
+
+      {/* PROGRAM */}
+      <section className="container mx-auto py-12 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40">
+        <h1 className="text-center font-bold text-3xl md:text-[44px] mb-8">
           Program Kami
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 place-items-center">
           {data.slice(0, 4).map((item, index) => (
             <Cj
               key={index}
@@ -81,100 +95,98 @@ function Page() {
               description={item.description}
               image={item.image}
               color={item.color}
+              link={item.link}
             />
           ))}
         </div>
 
-        {/* DSE Edu full width */}
-        <div className="mt-6">
-          <Cj
-            title={data[4].title}
-            description={data[4].description}
-            image={data[4].image}
-            color={data[4].color}
-          />
+        {/* FULL WIDTH CARD */}
+        <div className="mt-6 flex justify-center">
+          <Cj {...data[4]} />
         </div>
       </section>
+
+      {/* IKLAN */}
       <section>
         <Iklan />
       </section>
-      <section className="flex flex-col justify-center w-full ">
-        <h1 className="text-center text-5xl mb-10 font-bold font-regular">
+
+      {/* BENEFIT CARD */}
+      <section className="py-16 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40">
+        <h1 className="text-center text-3xl md:text-5xl mb-12 font-bold">
           Apa yang anda dapatkan?
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12  w-full mx-auto px-10">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           <Cards
             icon={BookCheck}
             title="Kurikulum Siap Pakai"
             bgColor="#35B5C3"
-            iColor="#fff"
             iconSize={60}
           />
           <Cards
             icon={ToolCase}
-            title="Modul & teaching tools lengkap"
+            title="Modul & Teaching Tools"
             bgColor="#F0B343"
-            iColor="#fff"
             iconSize={60}
           />
           <Cards
             icon={School}
-            title="Pelatihan intensif untuk pengelola dan pengajar"
+            title="Pelatihan Intensif"
             bgColor="#DA384A"
-            iColor="#fff"
             iconSize={60}
           />
           <Cards
             icon={CircleStar}
-            title="Branding & promosi digital dari pusat"
+            title="Branding & Promosi"
             bgColor="#35B5C3"
-            iColor="#fff"
             iconSize={60}
           />
           <Cards
             icon={Tv}
-            title="Dukungan kampanye lokal (iklan & materi visual)"
+            title="Dukungan Iklan Lokal"
             bgColor="#F0B343"
-            iColor="#fff"
             iconSize={60}
           />
           <Cards
             icon={Handshake}
-            title="Sistem operasional yang mudah dijalankan"
+            title="Sistem Operasional Mudah"
             bgColor="#DA384A"
-            iColor="#fff"
             iconSize={60}
           />
         </div>
       </section>
-      <section className="w-full py-16 px-40">
+
+      {/* SYARAT */}
+      <section className="py-16 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40">
         <Syarat />
       </section>
-      <section>
-        <Image
-          src="/wave.svg"
-          alt="Wave"
-          width={1920}
-          height={300}
-          className="w-full h-auto"
-        />
-      </section>
-      <section className="w-full bg-[#35B5C3] pb-10 flex justify-center items-center">
+
+      {/* WAVE */}
+      <Image
+        src="/wave.svg"
+        alt="Wave"
+        width={1920}
+        height={300}
+        className="w-full h-auto"
+      />
+
+      {/* CTA */}
+      <section className="bg-[#35B5C3] py-16 px-4 flex justify-center">
         <div className="bg-white rounded-3xl shadow-lg text-center px-8 py-10 max-w-3xl w-full">
-          <h2 className="text-4xl font-bold font-regular mb-2">
+          <h2 className="text-3xl md:text-4xl font-bold mb-2">
             Tertarik Bermitra?
           </h2>
-          <p className="text-black font-regular mb-6">
+          <p className="mb-6">
             Isi formulir berikut, dan tim kami akan segera menghubungi Anda
           </p>
-          <button className="bg-[#35B5C3] text-white font-semibold py-2 px-6 w-50 rounded-full shadow hover:bg-[#1da4ae] transition-all">
+          <button className="bg-[#35B5C3] text-white py-2 px-8 rounded-full hover:bg-[#1da4ae] transition">
             Klik di sini
           </button>
         </div>
       </section>
-      <section>
-        <Footer />
-      </section>
+
+      <Footer />
     </div>
   );
 }

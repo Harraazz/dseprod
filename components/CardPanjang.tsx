@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -8,7 +9,8 @@ type CardPanjangProps = {
   title: string;
   description: string;
   image: string;
-  color: string; // untuk background dynamic
+  color: string;
+  link: string;
 };
 
 export default function CardPanjang({
@@ -16,32 +18,35 @@ export default function CardPanjang({
   description,
   image,
   color,
+  link, // ✅ JANGAN LUPA
 }: CardPanjangProps) {
+  const router = useRouter(); // ✅ HARUS DI SINI
+
   return (
     <Card
-      className={`flex flex-col md:flex-row items-center justify-between rounded-xl p-6 text-white`}
+      className="
+        w-full
+        max-w-[1100px]
+        h-full
+        flex flex-col
+        md:flex-row
+        items-stretch
+        rounded-xl
+        p-6
+        text-white
+      "
       style={{ backgroundColor: color }}
     >
-      {/* Bagian Kiri (Text) */}
-      <div className="flex-1 space-y-3">
-        <CardHeader className="p-0">
-          <CardTitle className="text-2xl font-bold font-regular">
-            {title}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-0 text-sm font-regular leading-relaxed">
-          {description}
-        </CardContent>
-        <Button
-          variant="outline"
-          className="w-70 mt-4 text-white border-white hover:bg-white hover:text-black text-[16px]"
-        >
-          Read More
-        </Button>
-      </div>
-
-      {/* Bagian Kanan (Image) */}
-      <div className="mt-6 md:mt-0 md:ml-6">
+      {/* IMAGE */}
+      <div
+        className="
+        order-1 md:order-2
+        mb-6 md:mb-0 md:ml-6
+        flex justify-center items-center
+        flex-shrink-0
+        w-full md:w-[185px]
+      "
+      >
         <Image
           src={image}
           alt={title}
@@ -49,6 +54,39 @@ export default function CardPanjang({
           height={185}
           className="object-contain"
         />
+      </div>
+
+      {/* TEXT */}
+      <div
+        className="
+        order-2 md:order-1
+        flex flex-col justify-between
+        flex-1 min-w-0
+        text-center md:text-left
+      "
+      >
+        <div className="space-y-3">
+          <CardHeader className="p-0">
+            <CardTitle className="text-xl md:text-2xl font-bold">
+              {title}
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent className="p-0 text-sm md:text-base leading-relaxed">
+            {description}
+          </CardContent>
+        </div>
+
+        {/* BUTTON */}
+        <div className="mt-6 flex justify-center md:justify-start">
+          <Button
+            variant="outline"
+            className="w-full sm:w-[200px] text-white border-white hover:bg-white hover:text-black"
+            onClick={() => router.push(link)}
+          >
+            Read More
+          </Button>
+        </div>
       </div>
     </Card>
   );

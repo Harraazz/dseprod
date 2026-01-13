@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Bj from "@/components/Bannerjudul";
 import Footer from "@/components/Ftr";
 
-const title = "CALISTUNG";
+const title = "ENGLISH";
 
 export default function RootLayout({
   children,

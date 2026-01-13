@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Footprints, Lightbulb, GraduationCap, LayoutGrid } from "lucide-react";
+import { Footprints, Lightbulb, GraduationCap, Puzzle } from "lucide-react";
 
 import { useRouter } from "next/navigation";
 
@@ -17,17 +17,17 @@ export default function Page() {
           {/* IMAGE */}
           <div
             className="
-              relative
-              w-full
-              max-w-[505px]
-              h-[200px]
-              md:h-[360px]
-              overflow-hidden
-              shadow-md
-              rounded-2xl
-              mx-auto
-              xl:mx-0
-            "
+                    relative
+                    w-full
+                    max-w-[505px]
+                    h-[200px]
+                    md:h-[360px]
+                    overflow-hidden
+                    shadow-md
+                    rounded-2xl
+                    mx-auto
+                    xl:mx-0
+                  "
           >
             <Image
               src="/BG-2.jpg"
@@ -41,19 +41,17 @@ export default function Page() {
           {/* TEXT */}
           <div className="px-2 sm:px-0">
             <p className="text-gray-600 text-[15px] md:text-[18px] text-justify leading-relaxed">
-              Kemampuan membaca, menulis, dan berhitung adalah fondasi utama
-              bagi anak untuk siap masuk sekolah dan mengikuti pelajaran dengan
-              percaya diri. Saat dasar ini kuat, anak lebih mudah memahami
-              materi baru, lebih fokus, dan tidak cepat merasa tertinggal di
-              kelas.
+              Math is more than just numbers. it’s about logic, problem-solving,
+              and critical thinking. When children feel confident in math, they
+              develop stronger focus, discipline, and the ability to face
+              challenges with creativity.
             </p>
 
             <p className="text-gray-600 text-[15px] md:text-[18px] mt-4 text-justify leading-relaxed">
-              Program Calistung DSE hadir untuk mendampingi anak usia dini agar
-              menguasai keterampilan dasar ini sejak awal. Dengan metode belajar
-              yang menyenangkan dan bertahap, anak tidak hanya bisa
-              baca-tulis-hitung, tapi juga menikmati proses belajar dan tumbuh
-              rasa percaya diri mereka.
+              DSE’s Math Program helps students strengthen their mathematical
+              foundation through fun, structured, and level-based learning — all
+              taught in English. It’s not only about mastering math concepts,
+              but also improving English comprehension for global readiness.
             </p>
           </div>
         </div>
@@ -69,28 +67,28 @@ export default function Page() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-12">
           {[
             {
-              title: "Metode Bertahap & Personal",
+              title: "Step-by-Step Learning System",
               color: "#33C4CF",
-              text: "Anak belajar sesuai level kemampuannya. Setiap tahap dirancang untuk menumbuhkan rasa percaya diri dan semangat belajar.",
+              text: "Lessons are designed progressively, allowing each student to learn comfortably at their own pace and truly understand every concept.",
               icon: Footprints,
             },
             {
-              title: "Belajar Lewat Aktivitas Seru",
+              title: "Focus on Understanding",
               color: "#E5484D",
-              text: "Materi disajikan lewat permainan dan kegiatan interaktif agar anak belajar sambil bersenang-senang.",
+              text: "We guide students to think critically and logically, not just memorize formulas — building lifelong math skills.",
               icon: Lightbulb,
             },
             {
-              title: "Pengajar Berkualitas",
+              title: "Qualified & Supportive Teachers",
               color: "#F5B93A",
-              text: "Guru berpengalaman dan terlatih mendampingi anak dengan sabar dan penuh perhatian.",
+              text: "Our experienced teachers ensure each child feels supported, confident, and motivated throughout their learning journey.",
               icon: GraduationCap,
             },
             {
-              title: "Lingkungan Belajar Nyaman",
+              title: "Intresting & Interactive Material",
               color: "#A8C545",
-              text: "Kelas aman, menyenangkan, dan penuh warna agar anak betah belajar.",
-              icon: LayoutGrid,
+              text: "Students practice using English naturally while learning math, helping them adapt to international standards and boost academic confidence.",
+              icon: Puzzle,
             },
           ].map((item, i) => {
             const Icon = item.icon;
@@ -155,26 +153,25 @@ export default function Page() {
 
         <div>
           <h3 className="text-[32px] font-bold mb-4">
-            Mau lihat seperti apa serunya belajar {""}
-            <span className="text-[#F0B343]">Calistung</span> di DSE?
+            Curious about how fun and endgaging our {""}
+            <span className="text-[#ACC253]">Math</span> lesson are?
           </h3>
           <p className="text-gray-600 text-2xl mb-4">
-            Kami sudah siapkan quiz singkat yang bisa dicoba anak untuk
-            merasakan pengalaman belajarnya
+            Try our short quiz and see how exciting learning can be with DSE!
           </p>
           <button
-            className=" bg-[#F0B343]
+            className=" bg-[#ACC253]
             text-white
             font-bold
             px-6 py-2
             rounded-lg
             shadow
             border-4 border-transparent
-            hover:border-[#DA384A]
+            hover:border-[#F0B343]
             transition-all duration-300"
             onClick={() => router.push("/quiz")}
           >
-            Cobain Quiz Seru Gratis
+            Try a fun quiz for free!
           </button>
         </div>
       </section>
@@ -190,10 +187,10 @@ export default function Page() {
         />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
-          <h1 className="text-[32px] text-[#164C52] font-bold max-w-[500px]">
+          <h1 className="text-[32px] text-[#164C52] font-bold max-w-125">
             Bantu anak kuasai fondasi belajar sejak dini
           </h1>
-          <h3 className="mt-1 text-[18px] text-[#164C52] font-medium max-w-[500px]">
+          <h3 className="mt-1 text-[18px] text-[#164C52] font-medium max-w-125">
             Yuk ngobrol bareng tim DSE
           </h3>
           <button className="mt-4 bg-[#35B5C3] border-4 border-white w-60 text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-[#35B5C3] transition">
