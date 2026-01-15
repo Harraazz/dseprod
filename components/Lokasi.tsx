@@ -14,7 +14,7 @@ export default function Lokasi({ gambar, footer }: LokasiProps) {
       className="
         relative
         w-full
-        h-[180px]        /* 📱 HP */
+        h-[120px]        /* 📱 HP */
         sm:h-[210px]
         md:h-[235px]    /* 🖥 Desktop */
         overflow-hidden

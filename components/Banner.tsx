@@ -11,7 +11,7 @@ import {
 
 export function Banner() {
   return (
-    <Carousel className="w-full pt-10">
+    <Carousel className="w-full md:pt-10 pt-15">
       <CarouselContent>
         {Array.from({ length: 3 }).map((_, index) => (
           <CarouselItem key={index} className="flex justify-center">
