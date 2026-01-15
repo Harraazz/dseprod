@@ -30,7 +30,7 @@ export default function Page() {
                   "
           >
             <Image
-              src="/BG-2.jpg"
+              src="/math.webp"
               alt="Belajar di DSE"
               fill
               className="object-cover"

@@ -35,7 +35,7 @@ export default function Page() {
                   "
           >
             <Image
-              src="/BG-2.jpg"
+              src="/english.webp"
               alt="Belajar di DSE"
               fill
               className="object-cover"

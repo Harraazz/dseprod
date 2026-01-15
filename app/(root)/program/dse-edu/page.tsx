@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Footprints, Lightbulb, GraduationCap, LayoutGrid } from "lucide-react";
+import { School, Shapes, GraduationCap, Lightbulb } from "lucide-react";
 
 import { useRouter } from "next/navigation";
 
@@ -17,20 +17,20 @@ export default function Page() {
           {/* IMAGE */}
           <div
             className="
-        relative
-        w-full
-        max-w-[505px]
-        h-[200px]
-        md:h-[360px]
-        overflow-hidden
-        shadow-md
-        rounded-2xl
-        mx-auto
-        xl:mx-0
-      "
+                    relative
+                    w-full
+                    max-w-[505px]
+                    h-[200px]
+                    md:h-[360px]
+                    overflow-hidden
+                    shadow-md
+                    rounded-2xl
+                    mx-auto
+                    xl:mx-0
+                  "
           >
             <Image
-              src="/math.webp"
+              src="/dseedu.webp"
               alt="Belajar di DSE"
               fill
               className="object-cover"
@@ -41,17 +41,18 @@ export default function Page() {
           {/* TEXT */}
           <div className="px-2 sm:px-0">
             <p className="text-gray-600 text-[15px] md:text-[18px] text-justify leading-relaxed">
-              Matematika bukan sekadar angka dan rumus, tapi cara berpikir
-              logis, analitis, dan sistematis. Kemampuan ini penting untuk
-              membantu anak memecahkan masalah, memahami pelajaran lain, dan
-              melatih ketekunan.
+              Masa SMP dan SMA adalah fase penting dalam perjalanan belajar anak
+              — di mana mereka mulai menghadapi pelajaran yang semakin kompleks
+              dan tuntutan akademik yang makin tinggi. Banyak siswa merasa
+              kewalahan, dan di sinilah DSE Edu hadir sebagai solusi.
             </p>
 
             <p className="text-gray-600 text-[15px] md:text-[18px] mt-4 text-justify leading-relaxed">
-              Program Matematika DSE dirancang agar anak belajar langkah demi
-              langkah dengan pendekatan yang menyenangkan. Menggunakan bahasa
-              pengantar Bahasa Indonesia, anak lebih mudah memahami konsep dan
-              menerapkannya dalam kehidupan sehari-hari.
+              Program DSE Edu membantu siswa memahami materi sekolah dengan
+              lebih mudah, sekaligus membangun kepercayaan diri dalam belajar.
+              Dengan sistem kelas semi private, setiap siswa mendapat perhatian
+              lebih, bisa bertanya bebas, dan belajar sesuai kebutuhan serta
+              gaya belajarnya masing-masing.ss.
             </p>
           </div>
         </div>
@@ -61,34 +62,39 @@ export default function Page() {
 
       <section className="w-full px-6 sm:px-10 md:px-20 lg:px-40 py-16">
         <h2 className="text-[32px] font-bold mb-10 text-gray-900">
-          Keunggulan Program Calistung di DSE
+          Keunggulan Program DSE Edu
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-12">
           {[
             {
-              title: "Pembelajaran Bertahap",
+              title: "Kelas Semi Private yang Fokus",
               color: "#33C4CF",
-              text: "Materi disusun secara sistematis sesuai kemampuan anak, memastikan pemahaman yang kuat sebelum lanjut ke tingkat berikutnya.",
-              icon: Footprints,
+              text: " Jumlah siswa dalam tiap kelas dibatasi agar interaksi lebih intens, membuat proses belajar lebih efektif dan personal.",
+              icon: School,
             },
             {
-              title: "Fokus pada Pemahaman Konsep",
-              color: "#E5484D",
-              text: "Anak diajak memahami mengapa dan bagaimana cara kerja matematika, bukan sekadar menghafal rumus.",
-              icon: Lightbulb,
-            },
-            {
-              title: "Pengajar Berkualitas",
+              title: "Pengajar Berkualitas & Supportif",
               color: "#F5B93A",
-              text: "Guru berpengalaman dan terlatih mendampingi anak dengan sabar, memastikan proses belajar efektif, menyenangkan, dan penuh dukungan positif.",
+              text: "Guru berpengalaman siap membimbing siswa tidak hanya agar paham materi, tapi juga percaya diri menghadapi tantangan akademik.",
               icon: GraduationCap,
             },
             {
-              title: "Latihan Menarik",
+              title: "Pembelajaran Relevan & Terarah",
+              color: "#E5484D",
+              text: "Materi disesuaikan dengan kurikulum sekolah dan kebutuhan siswa — dari tugas harian, ujian tengah semester, hingga persiapan ujian masuk perguruan tinggi.",
+              icon: Lightbulb,
+            },
+            {
+              title: "Pilihan Kelas Fleksibel",
               color: "#A8C545",
-              text: "Soal-soal dan aktivitas dibuat interaktif dan dekat dengan kehidupan sehari-hari, sehingga anak merasa matematika itu seru dan bermanfaat.",
-              icon: LayoutGrid,
+              description: "Tersedia tiga pilihan kelas:",
+              points: [
+                "Regular (belajar rutin mingguan)",
+                "Intensif (belajar menjelang ujian)",
+                "Weekend (fleksibel untuk siswa dengan jadwal padat)",
+              ],
+              icon: Shapes,
             },
           ].map((item, i) => {
             const Icon = item.icon;
@@ -100,11 +106,9 @@ export default function Page() {
             flex
             flex-col
             md:flex-col
-            lg:flex-col
-            xl:flex-row
+            lg:flex-row
             items-center
-            lg:items-center
-            xl:items-center
+            lg:items-start
             gap-4
           "
               >
@@ -131,9 +135,15 @@ export default function Page() {
                   >
                     {item.title}
                   </h3>
+                  <p>{item.description}</p>
                   <p className="text-gray-600 text-[16px]  leading-5">
                     {item.text}
                   </p>
+                  <ul>
+                    {item.points?.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             );
@@ -142,7 +152,7 @@ export default function Page() {
       </section>
 
       {/* ===================== SECTION BAWAH ===================== */}
-      <section className="w-full px-6 sm:px-10 md:px-20 lg:px-40 py-16 grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-10 items-center ">
+      <section className="w-full px-6 sm:px-10 md:px-20 lg:px-40 py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         <div className="flex justify-center">
           <Image
             src="/Quiz 1.png"
@@ -154,16 +164,15 @@ export default function Page() {
         </div>
 
         <div>
-          <h3 className="text-[25px] md:text-[30px] lg:md:text-[32px]   font-bold mb-4">
-            Mau lihat seperti apa serunya belajar {""}
-            <span className="text-[#35B5C3]">Bahasa Inggris</span> di DSE?
+          <h3 className="text-[32px] font-bold mb-4">
+            Curious about how fun and endgaging our {""}
+            <span className="text-[#ACC253]">Math</span> lesson are?
           </h3>
-          <p className="text-gray-600 md:text-2xl text-[20px] mb-4">
-            Kami sudah siapkan quiz singkat yang bisa dicoba anak untuk
-            merasakan pengalaman belajarnya
+          <p className="text-gray-600 text-2xl mb-4">
+            Try our short quiz and see how exciting learning can be with DSE!
           </p>
           <button
-            className=" bg-[#35B5C3]
+            className=" bg-[#ACC253]
             text-white
             font-bold
             px-6 py-2
@@ -174,7 +183,7 @@ export default function Page() {
             transition-all duration-300"
             onClick={() => router.push("/quiz")}
           >
-            Cobain Quiz Seru Gratis
+            Try a fun quiz for free!
           </button>
         </div>
       </section>

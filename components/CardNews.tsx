@@ -27,7 +27,7 @@ function CardNews({
     >
       {/* Gambar */}
       <CardContent className="flex justify-center items-center">
-        <div className="w-[250px] h-[150px] bg-white rounded-xl border-2 flex justify-center items-center">
+        <div className="w-62.5 h-[150px] bg-white rounded-xl border-2 flex justify-center items-center">
           <Image
             src={Gambar}
             alt={title}
