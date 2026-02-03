@@ -23,7 +23,7 @@ function Ftr() {
                 alt="Logo"
                 width={1280}
                 height={590}
-                className="w-[160px] object-contain"
+                className="w-50 object-contain"
               />
               <div className="flex space-x-5 text-xl">
                 <Instagram className="cursor-pointer hover:text-pink-600 transition" />
@@ -34,8 +34,8 @@ function Ftr() {
 
             {/* Programs */}
             <div>
-              <h3 className="font-bold mb-2">Programs</h3>
-              <ul className="space-y-1 text-sm">
+              <h1 className="font-bold mb-2 text-lg lg:text-2xl">Programs</h1>
+              <ul className="space-y-1 text-lg lg:text-2xl">
                 <li>English</li>
                 <li>Calistung</li>
                 <li>Matematika</li>
@@ -46,30 +46,31 @@ function Ftr() {
 
             {/* Lokasi */}
             <div>
-              <h3 className="font-bold mb-2">Lokasi</h3>
-              <ul className="space-y-1 text-sm">
+              <h3 className="font-bold mb-2 text-lg lg:text-2xl">Lokasi</h3>
+              <ul className="space-y-1 text-lg lg:text-2xl">
                 <li>Bekasi</li>
                 <li>Depok</li>
-                <li>Bandung</li>
-                <li>Semarang</li>
-                <li>Tangerang Selatan</li>
               </ul>
             </div>
 
             {/* Tentang Kami */}
             <div>
-              <h3 className="font-bold mb-2">Tentang Kami</h3>
-              <ul className="space-y-1 text-sm">
-                <li>Lorem ipsum</li>
-                <li>Lorem ipsum</li>
-                <li>Lorem ipsum</li>
+              <h3 className="font-bold mb-2 text-lg lg:text-2xl">
+                Tentang Kami
+              </h3>
+              <ul className="space-y-1 text-lg lg:text-2xl">
+                <li>Program</li>
+                <li>Kuis</li>
+                <li>Partnership</li>
               </ul>
             </div>
 
             {/* Kontak Kami */}
             <div>
-              <h3 className="font-bold mb-2">Kontak Kami</h3>
-              <ul className="space-y-1 text-sm">
+              <h3 className="font-bold mb-2 text-lg lg:text-2xl">
+                Kontak Kami
+              </h3>
+              <ul className="space-y-1 text-lg lg:text-2xl">
                 <li>Lorem ipsum</li>
                 <li>Lorem ipsum</li>
                 <li>Lorem ipsum</li>

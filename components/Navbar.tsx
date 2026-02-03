@@ -10,7 +10,6 @@ const items = [
   { title: "Kuis", url: "/quiz" },
   { title: "Berita", url: "/news" },
   { title: "Location", url: "/location" },
-  { title: "Kemitraan", url: "/Kemitraan" },
 ];
 
 export default function Navbar() {

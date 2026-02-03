@@ -38,14 +38,6 @@ function page() {
       color: "#9BC24C",
       link: "/program/math",
     },
-    {
-      title: "DSE Edu",
-      description:
-        "Program pengembangan internal DSE yang dirancang khusus untuk siswa SMP hingga SMA sebagai solusi dukungan tambahan dalam memahami materi sekolah. DSE Edu menggunakan sistem semi private dengan tiga pilihan kelas: Regular (pembelajaran rutin mingguan), Intensif (untuk kebutuhan akademik padat), dan Weekend (fleksibel untuk siswa sibuk).",
-      image: "/dse-edu.png",
-      color: "#157A84",
-      link: "/program/dse-edu",
-    },
   ];
 
   return (
@@ -78,17 +70,6 @@ function page() {
               link={item.link}
             />
           ))}
-        </div>
-
-        {/* DSE Edu */}
-        <div className="mt-6 flex justify-center">
-          <Cj
-            title={data[4].title}
-            description={data[4].description}
-            image={data[4].image}
-            color={data[4].color}
-            link={data[4].link}
-          />
         </div>
       </section>
 

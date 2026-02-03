@@ -56,8 +56,8 @@ function Kartu({
         <p
           className="
             font-bold
-            text-[16px]
-            md:text-[20px]
+            text-[20px]
+            md:text-[25px]
             lg:text-[24px]
           "
         >
@@ -67,8 +67,8 @@ function Kartu({
         {description && (
           <p
             className="
-              text-[13px]
-              md:text-[14px]
+              text-[15px]
+              md:text-[20px]
               lg:text-[20px]
               px-4
               leading-relaxed

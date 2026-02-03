@@ -8,6 +8,7 @@ import Cards from "@/components/Kartu";
 import { Banner } from "@/components/Banner";
 import Lokasi from "@/components/Lokasi";
 import Berita from "@/components/Berita";
+import Brand from "@/components/Brand";
 import Footer from "@/components/Ftr";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Shapes, Clock, Blocks } from "lucide-react";
@@ -16,9 +17,6 @@ function Home() {
   const lokasiData = [
     { gambar: "/DSE Logo 1.png", footer: "BEKASI" },
     { gambar: "/DSE Logo 1.png", footer: "DEPOK" },
-    { gambar: "/DSE Logo 1.png", footer: "SEMARANG" },
-    { gambar: "/DSE Logo 1.png", footer: "BANDUNG" },
-    { gambar: "/DSE Logo 1.png", footer: "TANGERANG SELATAN" },
   ];
 
   return (
@@ -55,6 +53,10 @@ function Home() {
             alt="Banner"
           />
         </div>
+      </section>
+
+      <section>
+        <Brand />
       </section>
 
       {/* ================= VALUE ================= */}
@@ -107,7 +109,7 @@ function Home() {
       <section className="container mx-auto px-4 md:px-20 py-12">
         <h1 className="text-[28px] md:text-[40px] font-bold">OUR LOCATION</h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8 ">
           {lokasiData.map((item, index) => {
             const isLastOdd =
               lokasiData.length % 2 !== 0 && index === lokasiData.length - 1;
@@ -123,7 +125,6 @@ function Home() {
           })}
         </div>
       </section>
-
       {/* ================= BANNER CTA ================= */}
       <section className="relative w-full my-10">
         <Image
