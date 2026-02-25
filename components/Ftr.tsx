@@ -1,31 +1,32 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { Instagram, Youtube, Facebook } from "lucide-react";
 
 function Ftr() {
   return (
-    <footer className="relative w-full overflow-hidden shadow-[0_1px_50px_rgba(0,0,0,0.2)]">
-      {/* Background Blur Kiri */}
-      <div className="absolute -left-40 top-20 w-[400px] h-[300px] md:w-[700px] md:h-[400px] rounded-full bg-[#DA384A8F] blur-3xl opacity-70" />
+    <footer className="relative w-full overflow-hidden">
+      {/* Background Blur */}
+      <div className="absolute -left-40 top-10 w-[500px] h-[400px] rounded-full bg-[#DA384A8F] blur-3xl opacity-60" />
+      <div className="absolute -right-40 top-10 w-[500px] h-[400px] rounded-full bg-[#F0B343BF] blur-3xl opacity-60" />
 
-      {/* Background Blur Kanan */}
-      <div className="absolute -right-40 top-20 w-[400px] h-[300px] md:w-[700px] md:h-[400px] rounded-full bg-[#F0B343BF] blur-3xl opacity-70" />
-
-      {/* Glass Container */}
-      <div className="relative z-10 mx-auto w-full">
-        <div className="backdrop-blur-md bg-white/40 border-t border-white/20 rounded-t-2xl shadow-lg">
-          {/* Content */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 px-4 md:px-10 py-10 text-black">
-            {/* Logo & Sosmed */}
-            <div className="space-y-4">
+      <div className="relative z-10 backdrop-blur-md bg-white/40 border-t border-white/20">
+        {/* CONTAINER FIX */}
+        <div className="max-w-6xl mx-auto px-6 py-14">
+          {/* GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-black">
+            {/* Logo */}
+            <div className="space-y-6">
               <Image
                 src="/DSE Logo 1.png"
                 alt="Logo"
-                width={1280}
-                height={590}
-                className="w-50 object-contain"
+                width={200}
+                height={80}
+                className="object-contain w-[180px]"
               />
-              <div className="flex space-x-5 text-xl">
+
+              <div className="flex space-x-4 text-lg">
                 <Instagram className="cursor-pointer hover:text-pink-600 transition" />
                 <Youtube className="cursor-pointer hover:text-red-600 transition" />
                 <Facebook className="cursor-pointer hover:text-blue-600 transition" />
@@ -34,8 +35,8 @@ function Ftr() {
 
             {/* Programs */}
             <div>
-              <h1 className="font-bold mb-2 text-lg lg:text-2xl">Programs</h1>
-              <ul className="space-y-1 text-lg lg:text-2xl">
+              <h3 className="font-semibold mb-4 text-base">Programs</h3>
+              <ul className="space-y-2 text-sm text-black/80">
                 <li>English</li>
                 <li>Calistung</li>
                 <li>Matematika</li>
@@ -46,43 +47,32 @@ function Ftr() {
 
             {/* Lokasi */}
             <div>
-              <h3 className="font-bold mb-2 text-lg lg:text-2xl">Lokasi</h3>
-              <ul className="space-y-1 text-lg lg:text-2xl">
+              <h3 className="font-semibold mb-4 text-base">Lokasi</h3>
+              <ul className="space-y-2 text-sm text-black/80">
                 <li>Bekasi</li>
                 <li>Depok</li>
+                <li>Bandung</li>
+                <li>Semarang</li>
+                <li>Tangerang Selatan</li>
               </ul>
             </div>
 
             {/* Tentang Kami */}
             <div>
-              <h3 className="font-bold mb-2 text-lg lg:text-2xl">
-                Tentang Kami
-              </h3>
-              <ul className="space-y-1 text-lg lg:text-2xl">
+              <h3 className="font-semibold mb-4 text-base">Tentang Kami</h3>
+              <ul className="space-y-2 text-sm text-black/80">
                 <li>Program</li>
                 <li>Kuis</li>
                 <li>Partnership</li>
-              </ul>
-            </div>
-
-            {/* Kontak Kami */}
-            <div>
-              <h3 className="font-bold mb-2 text-lg lg:text-2xl">
-                Kontak Kami
-              </h3>
-              <ul className="space-y-1 text-lg lg:text-2xl">
-                <li>Lorem ipsum</li>
-                <li>Lorem ipsum</li>
-                <li>Lorem ipsum</li>
+                <li>Kontak</li>
               </ul>
             </div>
           </div>
+        </div>
 
-          {/* Copyright */}
-          <div className="text-center text-xs text-black/70 py-4 border-t border-white/20">
-            © {new Date().getFullYear()} Dwi Sarana Edukasi. All rights
-            reserved.
-          </div>
+        {/* Copyright */}
+        <div className="text-center text-xs text-black/60 py-5 border-t border-white/20">
+          © {new Date().getFullYear()} Dwi Sarana Edukasi. All rights reserved.
         </div>
       </div>
     </footer>

@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <>
       <Navbar />
-      <Bj title={title} />
+      <Bj title={title} imageSrc="/banner-calistung.png" />
       <div>{children}</div>
       <Footer />
     </>

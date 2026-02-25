@@ -179,7 +179,7 @@ export default function Page() {
       {/* ===================== CTA ===================== */}
       <section className="relative w-full max-w-[1200px] h-[236px] mb-20 rounded-[12px] overflow-hidden px-4">
         <Image
-          src="/PROGRAM1.webp"
+          src="/PROGRAM2.png"
           alt="Background"
           fill
           className="object-cover -z-10"

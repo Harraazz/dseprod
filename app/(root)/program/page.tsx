@@ -10,7 +10,7 @@ function page() {
       title: "English",
       description:
         "Mengembangkan empat aspek literasi (reading, writing, speaking, listening) dan membangun kepercayaan diri ",
-      image: "/Bing-01.png",
+      image: "/bing.png",
       color: "#20B9C3",
       link: "/program/english",
     },
@@ -18,7 +18,7 @@ function page() {
       title: "Calistung",
       description:
         "Membantu anak mengenal huruf dan angka sebagai persiapan optimal memasuki pendidikan formal.",
-      image: "/calistung-01.png",
+      image: "/calistung.png",
       color: "#F3AF32",
       link: "/program/calistung",
     },
@@ -46,11 +46,11 @@ function page() {
 
       {/* Banner */}
       <section className="pt-20">
-        <Bj title="OUR" subtitle="PROGRAM" />
+        <Bj title="OUR" subtitle="PROGRAM" imageSrc="/banner-our_program.png" />
       </section>
 
       {/* Content */}
-      <section className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 py-12">
+      <section className="mx-auto px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 py-12">
         <div
           className="
             grid

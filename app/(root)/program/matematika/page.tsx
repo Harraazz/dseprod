@@ -156,14 +156,14 @@ export default function Page() {
         <div>
           <h3 className="text-[25px] md:text-[30px] lg:md:text-[32px]   font-bold mb-4">
             Mau lihat seperti apa serunya belajar {""}
-            <span className="text-[#35B5C3]">Bahasa Inggris</span> di DSE?
+            <span className="text-[#DA384A]">Matematika</span> di DSE?
           </h3>
           <p className="text-gray-600 md:text-2xl text-[20px] mb-4">
             Kami sudah siapkan quiz singkat yang bisa dicoba anak untuk
             merasakan pengalaman belajarnya
           </p>
           <button
-            className=" bg-[#35B5C3]
+            className=" bg-[#DA384A]
             text-white
             font-bold
             px-6 py-2
@@ -182,7 +182,7 @@ export default function Page() {
       {/* ===================== CTA ===================== */}
       <section className="relative w-full max-w-[1200px] h-[236px] mb-20 rounded-[12px] overflow-hidden px-4">
         <Image
-          src="/PROGRAM1.webp"
+          src="/PROGRAM2.png"
           alt="Background"
           fill
           className="object-cover -z-10"

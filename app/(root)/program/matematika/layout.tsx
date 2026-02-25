@@ -3,7 +3,7 @@ import Bj from "@/components/Bannerjudul";
 import Footer from "@/components/Ftr";
 
 const title = "MATEMATIKA";
-
+const image = "/banner-matematika.png";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <>
       <Navbar />
-      <Bj title={title} />
+      <Bj title={title} imageSrc={image} />
       <div>{children}</div>
       <Footer />
     </>

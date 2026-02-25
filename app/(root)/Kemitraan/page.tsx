@@ -68,7 +68,7 @@ function Page() {
 
       {/* BANNER */}
       <section className="pt-20">
-        <Bj title="PARTNERSHIP" />
+        <Bj title="PARTNERSHIP" imageSrc="/banner-our_program.png" />
       </section>
 
       {/* BRAND */}

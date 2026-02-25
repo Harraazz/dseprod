@@ -10,11 +10,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <>
       <Navbar />
-      <Bj title="Quiz" />
+      <Bj title="Quiz" imageSrc="/banner-quiz.png" />
       <div>{children}</div>
       <Footer />
     </>

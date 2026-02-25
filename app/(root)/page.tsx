@@ -26,9 +26,9 @@ function Home() {
       <ProbFix />
 
       {/* ================= HERO ================= */}
-      <section className="grid grid-cols-1 md:grid-cols-12 items-center px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-12 items-center gap-8">
         <div className="col-span-12 md:col-span-8">
-          <div className="ms-4 md:ms-80 mb-10 md:mb-40 pr-3">
+          <div className="col-span-12 md:col-span-7 text-justify md:text-left">
             <p className="mt-6 text-[18px] md:text-[20px] font-bold">
               Perkenalkan
             </p>
@@ -60,7 +60,7 @@ function Home() {
       </section>
 
       {/* ================= VALUE ================= */}
-      <section className="container mx-auto px-4 md:px-20 sm:px-5 py-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <p className="text-center font-bold text-[26px] md:text-[35px]">
           Kami hadir sebagai solusi belajar yang dipercaya oleh ribuan keluarga.
         </p>
@@ -106,7 +106,7 @@ function Home() {
       </section>
 
       {/* ================= LOCATION ================= */}
-      <section className="container mx-auto px-4 md:px-20 py-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-[28px] md:text-[40px] font-bold">OUR LOCATION</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-8 ">
@@ -149,7 +149,7 @@ function Home() {
       </section>
 
       {/* ================= NEWS ================= */}
-      <section className="container mx-auto px-4 md:px-20 pt-12 pb-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h1 className="text-[28px] md:text-[44px] font-bold">NEWS</h1>
         <Berita />
       </section>

@@ -19,7 +19,7 @@ export function Banner() {
               className="object-contain w-screen "
               width={1280}
               height={734}
-              src="/COVER PAGE.png"
+              src="/banner.png"
               alt="Banner"
               priority={index === 0}
             />

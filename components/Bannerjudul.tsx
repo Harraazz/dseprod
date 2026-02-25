@@ -4,16 +4,17 @@ import Image from "next/image";
 interface JudulProps {
   title: string;
   subtitle?: string;
+  imageSrc: string;
 }
 
-function Bannerjudul({ title, subtitle }: JudulProps) {
+function Bannerjudul({ title, subtitle, imageSrc }: JudulProps) {
   return (
     <div className="relative w-full h-[260px] sm:h-[320px] md:h-[420px] lg:h-[480px]">
       {/* Background image */}
       <Image
         className="object-cover"
         alt="judul"
-        src="/BG-2.jpg"
+        src={imageSrc}
         fill
         priority
       />
