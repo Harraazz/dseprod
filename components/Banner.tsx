@@ -1,33 +1,17 @@
 import * as React from "react";
-import Image from "next/image";
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  // CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
 export function Banner() {
   return (
-    <Carousel className="w-full md:pt-10 pt-15">
-      <CarouselContent>
-        {Array.from({ length: 3 }).map((_, index) => (
-          <CarouselItem key={index} className="flex justify-center">
-            <Image
-              className="object-contain w-screen "
-              width={1280}
-              height={734}
-              src="/banner.png"
-              alt="Banner"
-              priority={index === 0}
-            />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      {/* <CarouselNext /> */}
-    </Carousel>
+    <section className="w-full mt-20 bg-black">
+      <img
+        src="/banner.png"
+        alt="Company Banner"
+        className="
+          w-full 
+          h-auto 
+          object-contain 
+          lg:object-cover
+        "
+      />
+    </section>
   );
 }

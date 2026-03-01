@@ -19,9 +19,9 @@ export default function Page() {
             className="
               relative
               w-full
-              max-w-[505px]
-              h-[200px]
-              md:h-[360px]
+              max-w-126.25
+              h-50
+              md:h-90
               overflow-hidden
               shadow-md
               rounded-2xl
@@ -149,7 +149,7 @@ export default function Page() {
             alt="Belajar anak"
             width={357}
             height={259}
-            className="object-contain w-full max-w-[357px]"
+            className="object-contain w-full max-w-89.25"
           />
         </div>
 
@@ -180,7 +180,7 @@ export default function Page() {
       </section>
 
       {/* ===================== CTA ===================== */}
-      <section className="relative w-full max-w-[1200px] h-[236px] mb-20 rounded-[12px] overflow-hidden px-4">
+      <section className="relative w-full max-w-300 h-59 mb-20 rounded-xl overflow-hidden px-4">
         <Image
           src="/PROGRAM2.png"
           alt="Background"
@@ -190,10 +190,10 @@ export default function Page() {
         />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
-          <h1 className="text-[32px] text-[#164C52] font-bold max-w-[500px]">
+          <h1 className="text-[32px] text-[#164C52] font-bold max-w-125">
             Bantu anak kuasai fondasi belajar sejak dini
           </h1>
-          <h3 className="mt-1 text-[18px] text-[#164C52] font-medium max-w-[500px]">
+          <h3 className="mt-1 text-[18px] text-[#164C52] font-medium max-w-125">
             Yuk ngobrol bareng tim DSE
           </h3>
           <button className="mt-4 bg-[#35B5C3] border-4 border-white w-60 text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:text-[#35B5C3] transition">

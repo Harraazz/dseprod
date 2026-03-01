@@ -24,9 +24,9 @@ export default function Page() {
             className="
                     relative
                     w-full
-                    max-w-[505px]
-                    h-[200px]
-                    md:h-[360px]
+                    max-w-126.25
+                    h-50
+                    md:h-90
                     overflow-hidden
                     shadow-md
                     rounded-2xl
@@ -153,7 +153,7 @@ export default function Page() {
             alt="Belajar anak"
             width={357}
             height={259}
-            className="object-contain w-full max-w-[357px]"
+            className="object-contain w-full max-w-89.25"
           />
         </div>
 
@@ -184,9 +184,9 @@ export default function Page() {
       </section>
 
       {/* ===================== CTA ===================== */}
-      <section className="relative w-full max-w-[1200px] h-[236px] mb-20 rounded-[12px] overflow-hidden px-4">
+      <section className="relative w-full max-w-300 h-59 mb-20 rounded-xl overflow-hidden px-4">
         <Image
-          src="/PROGRAM2.PNG"
+          src="/PROGRAM2.png"
           alt="Background"
           fill
           className="object-cover -z-10"
