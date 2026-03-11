@@ -36,10 +36,12 @@ function Home() {
               Dwi Sarana Edukasi
             </h1>
             <p className="text-[16px] md:text-[20px]">
-              Kami percaya setiap anak adalah bintang yang bersinar dengan
-              caranya sendiri. Dengan pengalaman 15+ tahun mengelola program
-              pendidikan berkualitas internasional, kami telah membantu ribuan
-              siswa menemukan potensi terbaiknya.
+              Kami percaya setiap anak adalah bintang yang memiliki potensi luar
+              biasa. Melalui program pendidikan berkualitas internasional, kami
+              membantu setiap siswa menemukan dan mengembangkan kemampuan
+              terbaiknya. Kami berkomitmen menciptakan lingkungan belajar yang
+              mendukung, inspiratif, dan mendorong setiap anak untuk tumbuh
+              menjadi versi terbaik dari dirinya.
             </p>
           </div>
         </div>
